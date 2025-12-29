@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会員登録 - WAKASA! 若狭県総合ポータル</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-area">
+            <h1><span class="red">WAKASA</span><span class="blue">!</span></h1>
+            <p class="subtitle">若狭県最大級の地域ポータル</p>
+        </div>
+        <div class="header-info">
+            <div id="clock-display" class="clock">0000年0月0日(月) 00:00:00</div>
+            <div style="text-align: right;"><a href="index.html">トップページへ戻る</a></div>
+        </div>
+    </header>
+
+    <div class="status-bar2">
+        <span class="label2">ライブ天気予報</span>
+        <marquee scrollamount="3" class="weather-ticker" id="weather-display">
+            データを取得中... [沿岸(敦賀)]: --℃ / -- [中央(小浜)]: --℃ / -- [南部(舞鶴)]: --℃ / --
+        </marquee>
+    </div>
+
+    <div class="status-bar">
+        <span class="label">インフラ情報</span>
+        <marquee scrollamount="5" class="ticker">
+            【鉄道】県内路線：通常運転　【道路】三都高速道路：兵府IC付近で工事渋滞　【電力】県内全域：安定供給中　【行政】兵府市役所：本日は20時まで窓口延長
+        </marquee>
+    </div>
+
+    <div class="main-container">
+        
+        <nav class="sidebar-left">
+            <div class="box-header">主要エリア</div>
+            <ul class="link-list">
+                <li><a href="#">若狭市（県庁）</a></li>
+                <li><a href="#">兵府市</a></li>
+                <li><a href="#">北陵市</a></li>
+                <li><a href="#">白央市</a></li>
+                <li><a href="#">入塚市</a></li>
+            </ul>
+
+            <div class="box-header">沿岸エリア</div>
+            <ul class="link-list">
+                <li><a href="#">渡町</a></li>
+                <li><a href="#">江崎市</a></li>
+                <li><a href="#">汐崖町</a></li>
+                <li><a href="#">物部市</a></li>
+            </ul>
+
+            <div class="box-header">山間エリア</div>
+            <ul class="link-list">
+                <li><a href="#">深山市</a></li>
+                <li><a href="#">徳峰町</a></li>
+                <li><a href="#">折鷲市</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-center">
+            
+            <section class="news-section">
+                <div class="news-header">
+                    <h2>若狭ID 新規会員登録</h2>
+                </div>
+                
+                <div class="register-intro">
+                    <p><b>ようこそ、WAKASA!へ。</b><br>
+                    IDを取得して、ニュースへのコメントやポイント機能を利用しましょう。<br>
+                    <span style="color:red; font-weight:bold;">※今なら新規登録で 500pt プレゼント中！</span></p>
+                </div>
+
+                <form id="registration-form">
+                    <table class="register-table">
+                        <tr>
+                            <th>お名前 (ニックネーム) <span class="required" style="color: red;">*必須</span></th>
+                            <td>
+                                <input type="text" id="reg-name" placeholder="例：wakasa2025" required>
+                                <p class="form-note">※サイト内での表示に使われます。</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>お住まいの地域</th>
+                            <td>
+                                <select id="reg-area">
+                                    <option value="未設定">選択してください</option>
+                                    <option value="兵府市">兵府市</option>
+                                    <option value="若狭市">若狭市</option>
+                                    <option value="沿岸部">沿岸部 (江崎・物部など)</option>
+                                    <option value="山間部">県南部 (深山・徳峰など)</option>
+                                    <option value="県外">もしくは県外</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>パスワード</th>
+                            <td>
+                                <input type="password" placeholder="8文字以上" id="reg-password" required>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-register">規約に同意して登録する</button>
+                    </div>
+                </form>
+
+            </section>
+
+        </main>
+        <aside class="sidebar-right">
+            <div class="login-box" id="auth-box">
+                <div id="logged-out-view">
+                    <p>こんにちは、<b>ゲスト</b>さん</p>
+                    <p class="small-text">現在、会員登録ページです</p>
+                </div>
+                <div id="logged-in-view" style="display: none;">
+                    <p>こんにちは、<b id="user-display-name">---</b>さん</p>
+                    <p class="point-display">現在のポイント: <span id="user-points">0</span> pt</p>
+                </div>
+            </div>
+
+            <div class="ad-area">
+                <div class="ad-banner">
+                    <p>【求人】海が見えるオフィス</p>
+                    <strong>江崎ITパーク</strong>
+                </div>
+                <div class="ad-banner">
+                    <p>冬の味覚、到来。</p>
+                    <strong>若狭・老舗旅館「波音」</strong>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p class="copyright">Copyright (C) 2025 WAKASA Prefecture Portal. All Rights Reserved.</p>
+        <p class="disclaimer">※このサイトは架空のものです。</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>

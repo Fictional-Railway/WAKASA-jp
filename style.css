@@ -1,0 +1,240 @@
+/* 基本設定：あえて古いフォントを指定 */
+body {
+    font-family: "MS PGothic", "Hiragino Kaku Gothic ProN", Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* リンク色：Yahoo!ブルー */
+a {
+    color: #0033cc;
+    text-decoration: underline;
+}
+a:hover {
+    color: #ff6600;
+}
+
+/* ヘッダー周り */
+.site-header {
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+}
+
+.logo-area h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    font-family: Arial, sans-serif; /* ロゴだけモダンに */
+}
+.red { color: #cc0000; }
+.blue { color: #0033cc; }
+.subtitle { margin: 0; font-size: 11px; color: #666; }
+
+.header-info {
+    text-align: right;
+    font-size: 12px;
+}
+.clock { font-weight: bold; margin-bottom: 4px; }
+
+/* インフラステータスバー */
+.status-bar {
+    background-color: #e6f2ff;
+    border-bottom: 1px solid #cceeff;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+.status-bar .label {
+    background: #0033cc;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    margin-right: 10px;
+    white-space: nowrap;
+    border-radius: 2px;
+}
+.ticker { font-size: 12px; color: #333; }
+
+/* 3カラムレイアウト */
+.main-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 180px 1fr 220px; /* 左・中・右の比率 */
+    gap: 15px;
+    padding: 0 10px;
+}
+
+/* 共通：ボックスヘッダー */
+.box-header {
+    background-color: #efefef;
+    padding: 4px 8px;
+    font-weight: bold;
+    border-left: 4px solid #0033cc;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+/* 左カラム：リスト */
+.link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+.link-list li {
+    padding: 2px 5px;
+    border-bottom: 1px dotted #ccc;
+}
+
+/* 中央カラム：ニュース */
+.news-section {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #fff;
+}
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #cc0000;
+    padding-bottom: 5px;
+}
+.news-header h2 { margin: 0; font-size: 18px; color: #333; }
+.update-time { font-size: 10px; color: #888; }
+
+.tabs { margin-bottom: 10px; }
+.tab {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 3px 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.tab.active {
+    background: #cc0000;
+    color: white;
+    border-color: #cc0000;
+    font-weight: bold;
+}
+
+.news-list { list-style: none; padding: 0; margin: 0; }
+.news-list li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #ccc;
+    font-size: 15px; /* ニュースは見やすく */
+    display: flex;
+    justify-content: space-between;
+}
+.news-link { text-decoration: none; color: #0033cc; }
+.news-link:hover { text-decoration: underline; background-color: #f9f9f9; }
+.new-icon { color: red; font-size: 10px; font-weight: bold; border: 1px solid red; padding: 0 2px; }
+
+/* ツールアイコン */
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    text-align: center;
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #eee;
+}
+.tool-item { cursor: pointer; transition: 0.2s; }
+.tool-item:hover { transform: translateY(-2px); }
+.tool-item .icon { font-size: 24px; margin-bottom: 5px; }
+.tool-item .label { font-size: 11px; color: #666; font-weight: bold; }
+
+/* 右カラム */
+.login-box {
+    background: #fff8e1;
+    border: 1px solid #eec;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.btn-primary {
+    background: #0033cc;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+.ad-banner {
+    background: #ddd;
+    height: 60px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #555;
+    border: 1px solid #bbb;
+    cursor: pointer;
+}
+.bbs-list {
+    list-style: none;
+    padding: 0;
+    font-size: 11px;
+}
+.bbs-list li { margin-bottom: 4px; color: #555; }
+
+/* フッター */
+footer {
+    border-top: 1px solid #ccc;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 11px;
+    color: #666;
+}
+
+/* スマホ対応（レスポンシブ） */
+@media (max-width: 768px) {
+    .main-container {
+        grid-template-columns: 1fr; /* 1カラムにする */
+    }
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .header-info {
+        text-align: left;
+        margin-top: 10px;
+    }
+    .status-bar .label {
+        font-size: 9px;
+    }
+}
+
+/* インフラステータスバー */
+.status-bar2 {
+    background-color: #fff9e6;
+    border-bottom: 1px solid #ffe4cc;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+.status-bar2 .label2 {
+    background: #f2a500;
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+    padding: 2px 6px;
+    margin-right: 10px;
+    white-space: nowrap;
+    border-radius: 2px;
+}
+

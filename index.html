@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAKASA! - 若狭県総合ポータル</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-area">
+            <h1><span class="red">WAKASA</span><span class="blue">!</span></h1>
+            <p class="subtitle">若狭県最大級の地域ポータル</p>
+        </div>
+        <div class="header-info">
+            <div id="clock-display" class="clock">0000年0月0日(月) 00:00:00</div>
+            
+        </div>
+    </header>
+
+    <div class="status-bar2">
+    <span class="label2">ライブ天気予報</span>
+    <marquee scrollamount="3" class="weather-ticker" id="weather-display">
+        データを取得中... [沿岸(敦賀)]: --℃ / -- [中央(小浜)]: --℃ / -- [南部(舞鶴)]: --℃ / --
+    </marquee>
+</div>
+
+    <div class="status-bar">
+        <span class="label">インフラ情報</span>
+        <marquee scrollamount="5" class="ticker">
+            【鉄道】県内路線：通常運転　【道路】三都高速道路：兵府IC付近で工事渋滞　【電力】県内全域：安定供給中　【行政】兵府市役所：本日は20時まで窓口延長
+        </marquee>
+    </div>
+
+    <div class="main-container">
+        
+        <nav class="sidebar-left">
+            <div class="box-header">主要エリア</div>
+            <ul class="link-list">
+                <li><a href="#">若狭市（県庁）</a></li>
+                <li><a href="#">兵府市</a></li>
+                <li><a href="#">北陵市</a></li>
+                <li><a href="#">白央市</a></li>
+                <li><a href="#">入塚市</a></li>
+            </ul>
+
+            <div class="box-header">沿岸エリア</div>
+            <ul class="link-list">
+                <li><a href="#">渡町</a></li>
+                <li><a href="#">江崎市</a></li>
+                <li><a href="#">汐崖町</a></li>
+                <li><a href="#">物部市</a></li>
+            </ul>
+
+            <div class="box-header">山間エリア</div>
+            <ul class="link-list">
+                <li><a href="#">深山市</a></li>
+                <li><a href="#">徳峰町</a></li>
+                <li><a href="#">折鷲市</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-center">
+            
+            <section class="news-section">
+    <div class="news-header">
+        <h2>若狭トピックス</h2>
+        <span class="update-time">最終更新: <span id="last-update">--:--</span></span>
+    </div>
+    <div class="tabs">
+        <button class="tab active" data-category="main">主要</button>
+        <button class="tab" data-category="local">地域</button>
+        <button class="tab" data-category="economy">経済</button>
+    </div>
+    <ul class="news-list" id="news-container">
+    </ul>
+</section>
+
+            <section class="tools-section">
+                <h3>▼ くらしの便利ツール</h3>
+                <div class="tool-grid">
+                    <div class="tool-item">
+                        <div class="icon">🗑️</div>
+                        <div class="label">ゴミ出し</div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="icon">🏥</div>
+                        <div class="label">当番医</div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="icon">🚌</div>
+                        <div class="label">バス位置</div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="icon">🥬</div>
+                        <div class="label">直売所</div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <aside class="sidebar-right">
+    <div class="login-box" id="auth-box">
+        <div id="logged-out-view">
+            <p>こんにちは、<b>ゲスト</b>さん</p>
+            <button class="btn-primary" id="login-btn">若狭IDでログイン</button>
+            <p class="small-text"><a href="./register.html" id="signup-link">新規会員登録はこちら</a></p>
+        </div>
+
+        <div id="logged-in-view" style="display: none;">
+            <p>こんにちは、<b id="user-display-name">---</b>さん</p>
+            <p class="point-display">現在のポイント: <span id="user-points">0</span> pt</p>
+            <button class="btn-secondary" id="logout-btn">ログアウト</button>
+        </div>
+    </div>
+
+    <div class="mission-box" id="mission-area" style="display: none;">
+        <button id="get-point-btn">🎁 今日の来県ポイントをもらう</button>
+    </div>
+
+    <div class="ad-area">
+        <div class="ad-banner">
+            <p>【求人】海が見えるオフィス</p>
+            <strong>江崎ITパーク</strong>
+        </div>
+    </div>
+</aside>
+
+    </div>
+
+    <footer>
+        <p class="copyright">Copyright (C) 2025 WAKASA Prefecture Portal. All Rights Reserved.</p>
+        <p class="disclaimer">※このサイトは架空のものです。</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
