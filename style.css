@@ -238,3 +238,63 @@ footer {
     border-radius: 2px;
 }
 
+/* 写真ギャラリー */
+.gallery-section {
+    margin-top: 20px;
+}
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+.photo-item {
+    text-align: center;
+}
+.photo-placeholder {
+    background-color: #eee;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+}
+.photo-item p {
+    font-size: 11px;
+    margin: 0;
+    color: #444;
+}
+
+/* イベントリスト */
+.event-section {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 10px;
+}
+.event-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+.event-list li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #ccc;
+    font-size: 13px;
+    display: flex;
+}
+.event-date {
+    color: #cc0000;
+    font-weight: bold;
+    margin-right: 10px;
+    min-width: 50px;
+}
+.event-title {
+    color: #0033cc;
+    cursor: pointer;
+}
+.event-title:hover {
+    text-decoration: underline;
+}
