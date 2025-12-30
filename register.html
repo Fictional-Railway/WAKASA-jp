@@ -3,61 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会員登録 - WAKASA! 若狭県総合ポータル</title>
+    <title>新規会員登録 - WAKASA!</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="site-header">
         <div class="logo-area">
-            <h1><span class="red">WAKASA</span><span class="blue">!</span></h1>
+            <h1><a href="index.html" style="text-decoration:none; color:inherit;"><span class="red">WAKASA</span><span class="blue">!</span></a></h1>
             <p class="subtitle">若狭県最大級の地域ポータル</p>
         </div>
         <div class="header-info">
             <div id="clock-display" class="clock">0000年0月0日(月) 00:00:00</div>
-            <div style="text-align: right;"><a href="index.html">トップページへ戻る</a></div>
         </div>
     </header>
 
     <div class="status-bar2">
         <span class="label2">ライブ天気予報</span>
         <marquee scrollamount="3" class="weather-ticker" id="weather-display">
-            データを取得中... [沿岸(敦賀)]: --℃ / -- [中央(小浜)]: --℃ / -- [南部(舞鶴)]: --℃ / --
+            データを取得中... 
         </marquee>
     </div>
 
     <div class="status-bar">
         <span class="label">インフラ情報</span>
         <marquee scrollamount="5" class="ticker">
-            【鉄道】県内路線：通常運転　【道路】三都高速道路：兵府IC付近で工事渋滞　【電力】県内全域：安定供給中　【行政】兵府市役所：本日は20時まで窓口延長
+            【会員情報】システムメンテナンスのお知らせ：来月1日 AM2:00〜AM4:00
         </marquee>
     </div>
 
     <div class="main-container">
         
         <nav class="sidebar-left">
-            <div class="box-header">主要エリア</div>
+            <div class="box-header">主要エリア（三都）</div>
             <ul class="link-list">
-                <li><a href="#">若狭市（県庁）</a></li>
+                <li><a href="#">若狭市</a></li>
                 <li><a href="#">兵府市</a></li>
-                <li><a href="#">北陵市</a></li>
-                <li><a href="#">白央市</a></li>
-                <li><a href="#">入塚市</a></li>
+                <li><a href="#">物部市</a></li>
             </ul>
 
             <div class="box-header">沿岸エリア</div>
             <ul class="link-list">
+                <li><a href="#">香津村</a></li>
                 <li><a href="#">渡町</a></li>
-                <li><a href="#">江崎市</a></li>
                 <li><a href="#">汐崖町</a></li>
-                <li><a href="#">物部市</a></li>
+                <li><a href="#">伊舟市</a></li>
+                <li><a href="#">早手川町</a></li>
+                <li><a href="#">矢坂町</a></li>
+                <li><a href="#">江崎市</a></li>
+                <li><a href="#">葉が山町</a></li>
             </ul>
 
-            <div class="box-header">山間エリア</div>
+            <div class="box-header">中部・南部エリア</div>
             <ul class="link-list">
-                <li><a href="#">深山市</a></li>
+                <li><a href="#">甲日市</a></li>
+                <li><a href="#">氏川町</a></li>
                 <li><a href="#">徳峰町</a></li>
+                <li><a href="#">入塚市</a></li>
+                <li><a href="#">深山町</a></li>
                 <li><a href="#">折鷲市</a></li>
+                <li><a href="#">北陵市</a></li>
+                <li><a href="#">白央市</a></li>
+                <li><a href="#">千鳴村</a></li>
+                <li><a href="#">朝渕村</a></li>
+                <li><a href="#">丹谷町</a></li>
+                <li><a href="#">小桟田町</a></li>
             </ul>
         </nav>
 
@@ -68,70 +78,71 @@
                     <h2>若狭ID 新規会員登録</h2>
                 </div>
                 
-                <div class="register-intro">
-                    <p><b>ようこそ、WAKASA!へ。</b><br>
-                    IDを取得して、ニュースへのコメントやポイント機能を利用しましょう。<br>
-                    <span style="color:red; font-weight:bold;">※今なら新規登録で 500pt プレゼント中！</span></p>
+                <div style="padding: 20px;">
+                    <p>若狭IDを作成すると、ポイント機能やパーソナライズ機能がご利用いただけます。</p>
+                    
+                    <form id="registration-form" style="background:#f9f9f9; padding:20px; border:1px solid #ccc; margin-top:15px;">
+                        <div style="margin-bottom:15px;">
+                            <label><strong>お名前（ニックネーム可）</strong></label><br>
+                            <input type="text" id="reg-name" style="width:95%; padding:8px; margin-top:5px; border:1px solid #999;">
+                        </div>
+                        
+                        <div style="margin-bottom:15px;">
+                            <label><strong>お住まいの地域</strong></label><br>
+                            <select id="reg-area" style="width:98%; padding:8px; margin-top:5px; border:1px solid #999;">
+                                <option value="wakasa">若狭市</option>
+                                <option value="esaki">江崎市</option>
+                                <option value="miyama">深山町</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom:20px;">
+                            <label><strong>メールマガジン</strong></label><br>
+                            <input type="checkbox" checked> 希望する（地域のお得情報をお届け）
+                        </div>
+
+                        <button type="submit" class="btn-primary" style="padding:15px; font-size:16px;">
+                            登録して特典 500pt を受け取る
+                        </button>
+                    </form>
                 </div>
-
-                <form id="registration-form">
-                    <table class="register-table">
-                        <tr>
-                            <th>お名前 (ニックネーム) <span class="required" style="color: red;">*必須</span></th>
-                            <td>
-                                <input type="text" id="reg-name" placeholder="例：wakasa2025" required>
-                                <p class="form-note">※サイト内での表示に使われます。</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>お住まいの地域</th>
-                            <td>
-                                <select id="reg-area">
-                                    <option value="未設定">選択してください</option>
-                                    <option value="兵府市">兵府市</option>
-                                    <option value="若狭市">若狭市</option>
-                                    <option value="沿岸部">沿岸部 (江崎・物部など)</option>
-                                    <option value="山間部">県南部 (深山・徳峰など)</option>
-                                    <option value="県外">もしくは県外</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>パスワード</th>
-                            <td>
-                                <input type="password" placeholder="8文字以上" id="reg-password" required>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn-register">規約に同意して登録する</button>
-                    </div>
-                </form>
-
             </section>
 
         </main>
+
         <aside class="sidebar-right">
             <div class="login-box" id="auth-box">
                 <div id="logged-out-view">
                     <p>こんにちは、<b>ゲスト</b>さん</p>
-                    <p class="small-text">現在、会員登録ページです</p>
+                    <button class="btn-primary" id="login-btn">若狭IDでログイン</button>
+                    <p class="small-text">※登録済みの方はこちら</p>
                 </div>
+
                 <div id="logged-in-view" style="display: none;">
                     <p>こんにちは、<b id="user-display-name">---</b>さん</p>
                     <p class="point-display">現在のポイント: <span id="user-points">0</span> pt</p>
+                    <button class="btn-secondary" id="logout-btn">ログアウト</button>
                 </div>
             </div>
-
+            
+            <div class="mission-box" id="mission-area" style="display: none;">
+                <button id="get-point-btn">🎁 今日の来県ポイントをもらう</button>
+            </div>
+            <span style="margin: 1px;"></span>
             <div class="ad-area">
+                <div class="box-header2">広告エリア</div>
                 <div class="ad-banner">
                     <p>【求人】海が見えるオフィス</p>
+                    <p>詳細はこちらから</p>
                     <strong>江崎ITパーク</strong>
                 </div>
-                <div class="ad-banner">
-                    <p>冬の味覚、到来。</p>
-                    <strong>若狭・老舗旅館「波音」</strong>
+                <div class="ad-banner2">
+                    <a style="text-decoration: none; text-align: center; display: block; color: #595959;" href="https://fictional-railway.github.io/Ifunesan-Bus/">
+                    <p>心にしまった夢、もう一度かなえてみませんか？</p>
+                    <p>伊舟山バスでは運転手を募集しております。</p>
+                    <strong>伊舟山交通</strong>
+                    </a>
                 </div>
             </div>
         </aside>
@@ -141,9 +152,9 @@
     <footer>
         <p class="copyright">Copyright (C) 2025 WAKASA Prefecture Portal. All Rights Reserved.</p>
         <p class="disclaimer">※このサイトは架空のものです。</p>
+        <a style="color: rgb(87, 182, 255);" href="https://fictional-railway.github.io/myrailways/">架空鉄道一覧はこちらから</a><br><br>
     </footer>
 
     <script src="script.js"></script>
-    <script src="register.js"></script>
 </body>
 </html>

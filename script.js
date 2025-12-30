@@ -1,338 +1,361 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. 時計機能
-    function updateClock() {
-        const now = new Date();
-        const days = ['日', '月', '火', '水', '木', '金', '土'];
-        
-        const year = now.getFullYear();
-        const month = now.getMonth() + 1;
-        const date = now.getDate();
-        const day = days[now.getDay()];
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
+    // ==========================================
+    // 1. 全ページ共通機能 (時計・天気・ログイン)
+    // ==========================================
 
-        const dateString = `${year}年${month}月${date}日(${day}) ${hours}:${minutes}:${seconds}`;
-        document.getElementById('clock-display').textContent = dateString;
-
-        // ニュースの更新時間もついでに現在時刻にする（生きてる感を出す）
-        document.getElementById('last-update').textContent = `${hours}:${minutes}`;
-    }
-    setInterval(updateClock, 1000);
-    updateClock(); // 初期実行
-
-    // 2. 疑似天気API機能（地図のエリア分けに基づく）
-    // ランダムな天気を生成して表示します
-    function fetchWakasaWeather() {
-        const weathers = ['☀️ 晴れ', '☁️ 曇り', '☂️ 雨', '⛄️ 雪', '🌥 薄曇り'];
-        
-        // エリアごとの天気をランダム決定
-        const coastWeather = weathers[Math.floor(Math.random() * weathers.length)];
-        const centralWeather = weathers[Math.floor(Math.random() * weathers.length)];
-        
-        // 山間部はちょっと寒そうにする（雪率高め）
-        let mountainWeather = weathers[Math.floor(Math.random() * weathers.length)];
-        if(Math.random() > 0.7) mountainWeather = '⛄️ 大雪'; 
-
-        // 温度も適当に生成（冬設定）
-        const tempCoast = Math.floor(Math.random() * 5) + 8; // 8~12度
-        const tempCentral = Math.floor(Math.random() * 5) + 5; // 5~9度
-        const tempMt = Math.floor(Math.random() * 5) + 0; // 0~4度
-
-        // HTMLに反映
-        document.getElementById('weather-coast').textContent = `沿岸部(江崎): ${coastWeather} ${tempCoast}℃`;
-        document.getElementById('weather-central').textContent = `中央部(若狭): ${centralWeather} ${tempCentral}℃`;
-        document.getElementById('weather-mountain').textContent = `山間部(深山): ${mountainWeather} ${tempMt}℃`;
-    }
-
-    fetchWakasaWeather(); // ページ読み込み時に実行
-
-    // 3. ニュースタブの切り替え（簡易版）
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // アクティブクラスの切り替え
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            
-            // 本当はここで記事リストを入れ替えるが、今回はアラートで演出
-            // alert(`「${tab.textContent}」タブの情報を取得しました（疑似）`);
-        });
-    });
-
-    // 4. 便利ツールのインタラクション
-    const tools = document.querySelectorAll('.tool-item');
-    tools.forEach(tool => {
-        tool.addEventListener('click', function() {
-            const label = this.querySelector('.label').textContent;
-            alert(`【若狭県システム】\n「${label}」の最新情報を取得中...\n\n（※システム接続完了）`);
-        });
-    });
-
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- ⚙️ 設定エリア ---
-    // ここに取得したAPIキーを入力してください
-    const API_KEY = 'c1621a45a216a7d680a5d8ab3a1920b1'; 
-    
-    // 都市ID設定（敦賀, 小浜, 舞鶴）
-    const CITIES = [
-        { name: "沿岸部(敦賀)", id: "1850551" }, // Tsuruga
-        { name: "中央部(小浜)", id: "1853610" }, // Obama
-        { name: "南部(舞鶴)", id: "1858094" }   // Maizuru
-    ];
-
-    // 1. 時計機能（以前と同じ）
+    // --- 時計機能 ---
     function updateClock() {
         const now = new Date();
         const days = ['日', '月', '火', '水', '木', '金', '土'];
         const dateString = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日(${days[now.getDay()]}) ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-        document.getElementById('clock-display').textContent = dateString;
+        
+        const clockEl = document.getElementById('clock-display');
+        if (clockEl) clockEl.textContent = dateString;
+        
+        const updateEl = document.getElementById('last-update');
+        if (updateEl) updateEl.textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
     }
     setInterval(updateClock, 1000);
+    updateClock();
 
-    // 2. 実際の天気API取得機能
+    // --- 天気API (設定エラー回避付き) ---
+    const API_KEY = 'c1621a45a216a7d680a5d8ab3a1920b1'; 
+    const CITIES = [
+        { name: "沿岸部(敦賀)", id: "1850551" },
+        { name: "中央部(小浜)", id: "1853610" },
+        { name: "南部(舞鶴)", id: "1858094" }
+    ];
+
     async function fetchLiveWeather() {
-        if (API_KEY === 'YOUR_API_KEY_HERE') {
-            document.getElementById('weather-display').textContent = "【設定エラー】APIキーを入力してください。";
-            return;
-        }
+        const display = document.getElementById('weather-display');
+        if (!display) return;
 
         try {
             let weatherStrings = [];
-
             for (const city of CITIES) {
                 const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${city.id}&appid=${API_KEY}&units=metric&lang=ja`);
                 const data = await response.json();
-
                 const temp = Math.round(data.main.temp);
                 const desc = data.weather[0].description;
-                const icon = getCustomEmoji(data.weather[0].icon);
+                
+                let icon = '☁️';
+                const i = data.weather[0].icon;
+                if(i.includes('01')) icon='☀️';
+                else if(i.includes('02')) icon='⛅';
+                else if(i.includes('09') || i.includes('10')) icon='☔️';
+                else if(i.includes('13')) icon='⛄️';
 
                 weatherStrings.push(`【${city.name}】 ${icon} ${temp}℃ / ${desc}`);
             }
-
-            // 右から左へ流れるテキストを更新
-            document.getElementById('weather-display').textContent = "　　" + weatherStrings.join("　　|　　") + "　　";
-            
+            display.textContent = "　　" + weatherStrings.join("　　|　　") + "　　";
         } catch (error) {
-            console.error("天気データの取得に失敗しました:", error);
-            document.getElementById('weather-display').textContent = "天気データの取得に失敗しました。詳しくはテレビ局の天気予報をご覧ください。";
+            console.error("Weather Error", error);
+            display.textContent = "天気情報の取得に失敗しました。";
         }
     }
-
-    // 天気アイコン（APIのコードを絵文字に変換）
-    function getCustomEmoji(iconCode) {
-        const mapping = {
-            '01': '☀️', '02': '⛅', '03': '☁️', '04': '☁️',
-            '09': '🌧️', '10': '🌦️', '11': '⚡', '13': '❄️', '50': '🌫️'
-        };
-        return mapping[iconCode.substring(0, 2)] || '🌡️';
-    }
-
-    // 実行
     fetchLiveWeather();
-    // 15分ごとに更新
     setInterval(fetchLiveWeather, 15 * 60 * 1000);
-});
 
-// --- 📰 ニュースデータ設定 ---
-const newsData = {
-    main: [
-        { title: "若狭市と兵府市、「双子都市構想」で合意", isNew: false, hasCam: true },
-        { title: "【速報】入塚市で国内最古級の土器発見", isNew: true, hasCam: false },
-        { title: "江崎市沖で「巨大クリスタル鯖」最高値", isNew: false, hasCam: false },
-        { title: "北陵〜白央の新トンネル、開通式典", isNew: false, hasCam: true },
-        { title: "（もっと見る...）", isNew: false, hasCam: false }
-    ],
-    local: [
-        { title: "渡町で伝統の「潮干狩り大会」開催", isNew: true, hasCam: false },
-        { title: "汐崖町の展望台、リニューアルオープン", isNew: false, hasCam: true },
-        { title: "香津村の「メロン祭り」予約開始", isNew: false, hasCam: false },
-        { title: "折鷲市で迷子のヤギが警察官と散歩", isNew: false, hasCam: true },
-        { title: "（もっと見る...）", isNew: false, hasCam: false }
-    ],
-    economy: [
-        { title: "若狭電鉄、黒字転換「AI導入が寄与」", isNew: false, hasCam: false },
-        { title: "甲日市の高原リゾート、宿泊客数V字回復", isNew: true, hasCam: false },
-        { title: "物部市の精密機械工場、世界シェア1位に", isNew: false, hasCam: true },
-        { title: "若狭牛の海外輸出、過去最大を記録", isNew: false, hasCam: false },
-        { title: "（もっと見る...）", isNew: false, hasCam: false }
-    ]
-};
-
-// ニュースを表示する関数
-function displayNews(category) {
-    const container = document.getElementById('news-container');
-    container.innerHTML = ''; // 一旦空にする
-
-    newsData[category].forEach(item => {
-        const li = document.createElement('li');
-        
-        let icons = '';
-        if (item.isNew) icons += '<span class="new-icon">NEW</span>';
-        if (item.hasCam) icons += '<span class="camera-icon">📷</span>';
-
-        li.innerHTML = `
-            <a href="#" class="news-link">${item.title}</a>
-            <span class="news-icons">${icons}</span>
-        `;
-        container.appendChild(li);
-    });
-}
-
-// タブクリックイベントの設定
-const tabs = document.querySelectorAll('.tab');
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        // 全ボタンからactiveクラスを消す
-        tabs.forEach(t => t.classList.remove('active'));
-        // クリックされたボタンにactiveクラスを付ける
-        tab.classList.add('active');
-        
-        // ニュースを表示
-        const category = tab.getAttribute('data-category');
-        displayNews(category);
-    });
-});
-
-// 初期表示（主要ニュースを表示）
-displayNews('main');
-
-document.addEventListener('DOMContentLoaded', () => {
-    // --- 🔑 ユーザー認証・ポイント機能 ---
-
+    // ==========================================
+    // 2. ユーザー認証・ポイントシステム (全ページ共通)
+    // ==========================================
     const loggedOutView = document.getElementById('logged-out-view');
     const loggedInView = document.getElementById('logged-in-view');
     const missionArea = document.getElementById('mission-area');
     const nameDisplay = document.getElementById('user-display-name');
     const pointDisplay = document.getElementById('user-points');
 
-    // データの読み込み
     function loadUserData() {
+        if (!loggedOutView || !loggedInView) return;
+
         const savedName = localStorage.getItem('wakasa_user_name');
         const savedPoints = localStorage.getItem('wakasa_points');
 
         if (savedName) {
-            // ログイン状態にする
+            // ログイン中
             loggedOutView.style.display = 'none';
             loggedInView.style.display = 'block';
-            missionArea.style.display = 'block';
-            nameDisplay.textContent = savedName;
-            pointDisplay.textContent = savedPoints || 0;
+            if (missionArea) missionArea.style.display = 'block';
+            if (nameDisplay) nameDisplay.textContent = savedName;
+            if (pointDisplay) pointDisplay.textContent = savedPoints || 0;
+            
+            // フォームの自動入力（会員登録ページ用）
+            const regNameInput = document.getElementById('reg-name');
+            if(regNameInput) regNameInput.value = savedName;
+
         } else {
-            // 未ログイン状態
+            // ゲスト
             loggedOutView.style.display = 'block';
             loggedInView.style.display = 'none';
-            missionArea.style.display = 'none';
+            if (missionArea) missionArea.style.display = 'none';
         }
     }
 
-    // 会員登録・ログイン処理（シミュレーション）
-    document.getElementById('login-btn').addEventListener('click', () => {
-        const userName = prompt("若狭ID（お名前）を入力してください：", "若狭太郎");
-        if (userName) {
-            localStorage.setItem('wakasa_user_name', userName);
-            // 新規なら0ポイント、既存ならそのまま
-            if (!localStorage.getItem('wakasa_points')) {
-                localStorage.setItem('wakasa_points', 0);
+    const loginBtn = document.getElementById('login-btn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', () => {
+            const userName = prompt("若狭ID（お名前）を入力してください：", "若狭太郎");
+            if (userName) {
+                localStorage.setItem('wakasa_user_name', userName);
+                if (!localStorage.getItem('wakasa_points')) {
+                    localStorage.setItem('wakasa_points', 0);
+                }
+                loadUserData();
+                alert(`おかえりなさい、${userName}さん！`);
+                window.location.reload(); 
             }
+        });
+    }
+
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            if (confirm("ログアウトしますか？")) {
+                localStorage.removeItem('wakasa_user_name');
+                loadUserData();
+                window.location.reload(); 
+            }
+        });
+    }
+
+    const getPointBtn = document.getElementById('get-point-btn');
+    if (getPointBtn) {
+        getPointBtn.addEventListener('click', () => {
+            let currentPoints = parseInt(localStorage.getItem('wakasa_points') || 0);
+            currentPoints += 10;
+            localStorage.setItem('wakasa_points', currentPoints);
             loadUserData();
-            alert(`若狭県ポータルへようこそ、${userName}さん！`);
-        }
-    });
+            alert("10ポイント獲得しました！");
+        });
+    }
 
-    // ログアウト
-    document.getElementById('logout-btn').addEventListener('click', () => {
-        if (confirm("ログアウトしますか？")) {
-            localStorage.removeItem('wakasa_user_name');
-            // ポイントは消さずに残す（ログインしたらまた見れる仕様）
-            loadUserData();
-        }
-    });
-
-    // ポイント獲得ボタン
-    document.getElementById('get-point-btn').addEventListener('click', () => {
-        let currentPoints = parseInt(localStorage.getItem('wakasa_points') || 0);
-        currentPoints += 10; // 1回につき10pt付与
-        localStorage.setItem('wakasa_points', currentPoints);
-        
-        // 画面更新
-        pointDisplay.textContent = currentPoints;
-        
-        alert("10ポイント獲得しました！現在のポイント：" + currentPoints + " pt");
-    });
-
-    // ページ読み込み時に実行
     loadUserData();
 
-    // --- ⏳ 滞在ポイント加算システム ---
 
-let staySeconds = 0; // 滞在秒数をカウント
-const POINTS_PER_INTERVAL = 10; // もらえるポイント
-const INTERVAL_SECONDS = 30; // 何秒ごとにもらえるか
+    // ==========================================
+    // 3. ページ別機能：トップページ (ニュースタブ)
+    // ==========================================
+    const newsContainer = document.getElementById('news-container');
+    if (newsContainer) {
+        const newsData = {
+            main: [
+                { title: "若狭市と兵府市、「双子都市構想」で合意", isNew: false, hasCam: true },
+                { title: "【速報】入塚市で国内最古級の土器発見", isNew: true, hasCam: false },
+                { title: "江崎市沖で「巨大クリスタル鯖」最高値", isNew: false, hasCam: false },
+                { title: "北陵〜白央の新トンネル、開通式典", isNew: false, hasCam: true },
+                { title: "（もっと見る...）", isNew: false, hasCam: false }
+            ],
+            local: [
+                { title: "渡町で伝統の「潮干狩り大会」開催", isNew: true, hasCam: false },
+                { title: "汐崖町の展望台、リニューアルオープン", isNew: false, hasCam: true },
+                { title: "香津村の「メロン祭り」予約開始", isNew: false, hasCam: false },
+                { title: "折鷲市で迷子のヤギが警察官と散歩", isNew: false, hasCam: true },
+                { title: "（もっと見る...）", isNew: false, hasCam: false }
+            ],
+            economy: [
+                { title: "若狭電鉄、黒字転換「AI導入が寄与」", isNew: false, hasCam: false },
+                { title: "甲日市の高原リゾート、宿泊客数V字回復", isNew: true, hasCam: false },
+                { title: "物部市の精密機械工場、世界シェア1位に", isNew: false, hasCam: true },
+                { title: "若狭牛の海外輸出、過去最大を記録", isNew: false, hasCam: false },
+                { title: "（もっと見る...）", isNew: false, hasCam: false }
+            ]
+        };
 
-function startStayPointTimer() {
-    setInterval(() => {
-        staySeconds++;
-
-        // 30秒に達したかチェック
-        if (staySeconds >= INTERVAL_SECONDS) {
-            addStayPoints();
-            staySeconds = 0; // カウントをリセット
+        function displayNews(category) {
+            newsContainer.innerHTML = '';
+            const list = newsData[category] || newsData['main'];
+            list.forEach(item => {
+                const li = document.createElement('li');
+                let icons = '';
+                if (item.isNew) icons += '<span class="new-icon">NEW</span>';
+                if (item.hasCam) icons += '<span class="camera-icon">📷</span>';
+                li.innerHTML = `<a href="#" class="news-link">${item.title}</a><span class="news-icons">${icons}</span>`;
+                newsContainer.appendChild(li);
+            });
         }
-    }, 1000); // 1秒ごとにカウントアップ
-}
-
-function addStayPoints() {
-    // ログイン中（名前が保存されている）かチェック
-    const savedName = localStorage.getItem('wakasa_user_name');
-    if (!savedName) return; // ログインしてなければ何もしない
-
-    // 現在のポイントを取得して加算
-    let currentPoints = parseInt(localStorage.getItem('wakasa_points') || 0);
-    currentPoints += POINTS_PER_INTERVAL;
-    
-    // ローカルストレージに保存
-    localStorage.setItem('wakasa_points', currentPoints);
-    
-    // 画面上の表示を更新（右サイドバーのポイント表示）
-    const pointDisplay = document.getElementById('user-points');
-    if (pointDisplay) {
-        pointDisplay.textContent = currentPoints;
+        
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                displayNews(tab.getAttribute('data-category'));
+            });
+        });
+        displayNews('main');
     }
 
-    // 画面の端っこに小さく通知を出す（お好みで）
-    console.log(`${INTERVAL_SECONDS}秒滞在ボーナス！ ${POINTS_PER_INTERVAL}pt 獲得しました。`);
-    
-    // もし通知を出したい場合はこちらを有効に
-    // alert("滞在ボーナス！10ポイント獲得しました！"); 
-}
+    // ==========================================
+    // 4. ページ別機能：会員登録 (register.html)
+    // ==========================================
+    const regForm = document.getElementById('registration-form');
+    if (regForm) {
+        regForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nameVal = document.getElementById('reg-name').value;
+            const areaVal = document.getElementById('reg-area').value;
+            
+            if(!nameVal) { alert("名前を入力してください"); return; }
 
-// タイマー開始
-startStayPointTimer();
-});
+            localStorage.setItem('wakasa_user_name', nameVal);
+            localStorage.setItem('wakasa_user_area', areaVal);
+            localStorage.setItem('wakasa_points', 500);
 
-// ...（以前の時計・天気・ログイン機能はそのまま保持）...
-
-// ゴミ出しページ独自の処理
-document.addEventListener('DOMContentLoaded', () => {
-    const areaSelect = document.getElementById('area-select');
-    if (areaSelect) {
-        areaSelect.addEventListener('change', (e) => {
-            alert(`【システム】${e.target.selectedOptions[0].text}のデータを読み込みます。`);
-            // ここで本来はデータを書き換えます
+            alert(`ようこそ、${nameVal}さん！\n新規登録特典 500pt を付与しました。`);
+            window.location.href = 'index.html'; 
         });
     }
 
-    // カレンダー内のラベルをクリックしたら詳細を表示
-    const labels = document.querySelectorAll('.label-g');
-    labels.forEach(label => {
-        label.addEventListener('click', () => {
-            alert(`【詳細】${label.textContent}ゴミの収集日です。\n指定の袋に入れて朝8時までに出してください。`);
+    // ==========================================
+    // 5. ページ別機能：ゴミ出しカレンダー (gomidashi.html)
+    // ★ここが12ヶ月分自動生成ロジックです！
+    // ==========================================
+    const calendarRoot = document.getElementById('calendar-12months-container');
+    if (calendarRoot) {
+        // ログインしている人のエリアを取得して自動選択
+        const userArea = localStorage.getItem('wakasa_user_area');
+        if(userArea) {
+            const areaSelect = document.getElementById('area-select');
+            if(areaSelect) {
+                for(let i=0; i<areaSelect.options.length; i++){
+                    if(areaSelect.options[i].value === userArea){
+                        areaSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // カレンダー生成関数
+        function generateCalendar(year, month) {
+            // 月の初めと終わりを取得
+            const firstDate = new Date(year, month - 1, 1);
+            const lastDate = new Date(year, month, 0);
+            const startDay = firstDate.getDay(); // 曜日 (0:日, 1:月...)
+            const endDay = lastDate.getDate();   // 日数 (28~31)
+
+            let html = `
+            <div class="calendar-month-wrapper">
+                <h4 class="month-title">${year}年 ${month}月</h4>
+                <table class="garbage-table">
+                    <thead>
+                        <tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>`;
+
+            // 最初の空白セル
+            let dayCount = 0;
+            for (let i = 0; i < startDay; i++) {
+                html += `<td></td>`;
+                dayCount++;
+            }
+
+            // 日付を埋める
+            for (let d = 1; d <= endDay; d++) {
+                // 曜日計算 (0:日 ... 6:土)
+                const currentDayOfWeek = (dayCount % 7);
+                
+                // 行変え
+                if (dayCount > 0 && currentDayOfWeek === 0) {
+                    html += `</tr><tr>`;
+                }
+
+                // ゴミの判定ロジック (簡易シミュレーション)
+                // 月木:可燃, 火:資源, 金:プラ, 水(隔週):不燃, 第3月:有害...など
+                let garbageType = "";
+                let garbageClass = "";
+
+                // お正月休み判定
+                if (month === 1 && d <= 3) {
+                    garbageType = "年始休";
+                    garbageClass = "g-holiday";
+                } else {
+                    switch(currentDayOfWeek) {
+                        case 1: // 月曜
+                        case 4: // 木曜
+                            garbageType = "可燃";
+                            garbageClass = "g-burn";
+                            break;
+                        case 2: // 火曜
+                            garbageType = "資源";
+                            garbageClass = "g-res";
+                            break;
+                        case 3: // 水曜
+                            // 偶数週だけ不燃とする
+                            if (Math.floor(d / 7) % 2 === 0) {
+                                garbageType = "不燃";
+                                garbageClass = "g-non";
+                            }
+                            break;
+                        case 5: // 金曜
+                            garbageType = "プラ";
+                            garbageClass = "g-pla";
+                            break;
+                        case 6: // 土曜
+                        case 0: // 日曜
+                            // なし
+                            break;
+                    }
+                    // 月に一度の有害ごみ (20日以降の最初の月曜)
+                    if (d >= 20 && currentDayOfWeek === 1 && !garbageType.includes("有害")) {
+                        garbageType = "有害";
+                        garbageClass = "g-bin";
+                    }
+                }
+
+                // セルの中身
+                let cellContent = `<span class="day">${d}</span>`;
+                if (garbageType) {
+                    cellContent += `<br><span class="label-g ${garbageClass}">${garbageType}</span>`;
+                }
+
+                // 土日の色クラス
+                let tdClass = "";
+                if (currentDayOfWeek === 0) tdClass = "sun";
+                if (currentDayOfWeek === 6) tdClass = "sat";
+
+                html += `<td class="${tdClass}">${cellContent}</td>`;
+                dayCount++;
+            }
+
+            // 最後の空白セル
+            while (dayCount % 7 !== 0) {
+                html += `<td></td>`;
+                dayCount++;
+            }
+
+            html += `</tr></tbody></table></div>`;
+            return html;
+        }
+
+        // 12ヶ月分ループして生成
+        // 2026年の1月〜12月を表示
+        let fullCalendarHTML = "";
+        const startYear = 2026;
+        
+        for (let m = 1; m <= 12; m++) {
+            fullCalendarHTML += generateCalendar(startYear, m);
+        }
+        
+        calendarRoot.innerHTML = fullCalendarHTML;
+
+        // 生成されたラベルにクリックイベントを付与
+        const newLabels = document.querySelectorAll('.label-g');
+        newLabels.forEach(label => {
+            label.addEventListener('click', () => {
+                alert(`【ゴミ分別詳細】\n種別：${label.textContent}\n\n指定の袋に入れて、朝8時30分までにゴミステーションへお出しください。`);
+            });
         });
-    });
+        
+        // エリア変更時のアラート
+        const areaSelect = document.getElementById('area-select');
+        if(areaSelect) {
+            areaSelect.addEventListener('change', (e) => {
+               alert(`【システム】エリアを「${e.target.options[e.target.selectedIndex].text}」に変更しました。\n収集日が更新されます（シミュレーション）。`); 
+               // 本来ならここで再描画する
+            });
+        }
+    }
 });
