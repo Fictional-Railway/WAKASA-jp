@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WAKASA! - 若狭県総合ポータル</title>
+    <title>【速報】入塚市で国内最古級の土器発見 - WAKASA!</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="site-header">
         <div class="logo-area">
-            <h1><span class="red">WAKASA</span><span class="blue">!</span></h1>
+            <h1><a href="index.html" style="text-decoration:none; color:inherit;"><span class="red">WAKASA</span><span class="blue">!</span></a></h1>
             <p class="subtitle">若狭県最大級の地域ポータル</p>
         </div>
         <div class="header-info">
@@ -21,14 +21,14 @@
     <div class="status-bar2">
         <span class="label2">ライブ天気予報</span>
         <marquee scrollamount="3" class="weather-ticker" id="weather-display">
-            データを取得中... [沿岸(敦賀)]: --℃ / -- [中央(小浜)]: --℃ / -- [南部(舞鶴)]: --℃ / --
+            データを取得中... 
         </marquee>
     </div>
 
     <div class="status-bar">
         <span class="label">インフラ情報</span>
         <marquee scrollamount="5" class="ticker">
-            【鉄道】県内路線：通常運転　【道路】三都高速道路：兵府IC付近で工事渋滞　【電力】県内全域：安定供給中　【行政】兵府市役所：本日は20時まで窓口延長
+            【会員情報】システムメンテナンスのお知らせ：来月1日 AM2:00〜AM4:00
         </marquee>
     </div>
 
@@ -74,60 +74,45 @@
         <main class="content-center">
             
             <section class="news-section">
-                <div class="news-header">
-                    <h2>若狭トピックス</h2>
-                    <span class="update-time">最終更新: <span id="last-update">--:--</span></span>
+                <nav class="breadcrumb">
+                    <a href="index.html">トップ</a> &gt; <a href="#">若狭トピックス</a> &gt; 文化・歴史
+                </nav>
+                <div class="news-header"><h2>【速報】入塚市・深山遺跡で国内最古級の土器片を発見</h2></div>
+                <div class="article-meta">
+                    <span class="date">2025年12月30日 10:15</span>
+                    <span class="category">文化</span>
+                    <span class="author">若狭新聞・学術取材班</span>
                 </div>
-                <div class="tabs">
-                    <button class="tab active" data-category="main">主要</button>
-                    <button class="tab" data-category="local">地域</button>
-                    <button class="tab" data-category="economy">経済</button>
+                
+                <div class="main-image" style="background: #fdfdfd; border: 1px solid #ddd; padding: 10px; text-align: center; margin-bottom: 20px;">
+                    <img src="./news-image/Gemini_Generated_Image_3m67ha3m67ha3m67.png" width="70%" alt="">
+                    <p style="font-size: 11px; color: #666; margin-top: 5px;">発見された土器片（入塚市教育委員会提供）</p>
                 </div>
-                <ul class="news-list" id="news-container">
+
+                <p>若狭県南部の<strong>入塚市</strong>にある深山遺跡（みやまいせき）で、縄文時代草創期よりもさらに古い、約1万6500年前のものと推定される土器片が複数発見されたことが、市教育委員会の調査で明らかになった。</p>
+                
+                <p>これは青森県の大平山元Ｉ遺跡に匹敵する、<strong>国内最古級の発見</strong>となる可能性がある。入塚市は、来月にも専門家による緊急鑑定会議を招集する方針だ。</p>
+                    
+                <h3>発見の経緯</h3>
+                <p>深山遺跡では、県道拡張工事に伴う事前調査が昨秋から行われていた。今回発見されたのは、深さ約2メートルの地層から出土した、厚さ約5ミリの無文土器（模様のない土器）の破片3点。周囲からは微細な炭化物も発見されており、放射性炭素年代測定の結果、驚きの年代が算出されたという。</p>
+                
+                <h3>歴史が塗り替えられる可能性</h3>
+                <p>これまで若狭県内では、約1万年前の遺跡が最古とされていたが、今回の発見により<strong>「若狭の歴史が5000年以上さかのぼる」</strong>ことになる。専門家は「当時の人類がどのように定住を始めたかを探る上で、極めて重要な資料になる」と指摘している。</p>
+
+                <div class="notice-box">
+                    <strong>【一般公開について】</strong><br>
+                    入塚市立歴史博物館にて、来週月曜日から1週間限定で特別展示が行われる予定です。詳細は入塚市公式HPをご確認ください。
+                </div>
+
+                <div class="related-news">
+                    <h4>【関連記事】</h4>
+                    <ul>
+                        <li><a href="#">入塚市、「歴史遺産・観光ルート」の整備予算を可決</a></li>
+                        <li><a href="#">深山町で見つかった謎の石列、専門家は「祭祀跡」と推測</a></li>
                     </ul>
-            </section>
-
-            <section class="tools-section">
-                <h3>▼ くらしの便利ツール</h3>
-                <div class="tool-grid">
-                    <div class="tool-item">
-                        <a style="text-decoration: none;" href="./gomidashi.html">
-                            <div class="icon">🗑️</div>
-                            <div class="label">ゴミ出し</div>
-                        </a>
-                    </div>
-                    <div class="tool-item">
-                        <div class="icon">🏥</div>
-                        <div class="label">当番医</div>
-                    </div>
-                    <div class="tool-item">
-                        <div class="icon">🚌</div>
-                        <div class="label">バス位置</div>
-                    </div>
-                    <div class="tool-item">
-                        <div class="icon">🥬</div>
-                        <div class="label">直売所</div>
-                    </div>
                 </div>
             </section>
 
-            <section class="event-section">
-                <div class="box-header">注目のイベント情報</div>
-                <ul class="event-list">
-                    <li>
-                        <span class="event-date">1/5(日)</span>
-                        <span class="event-title">【若狭市】新春・大凧揚げ大会（若狭中央公園）</span>
-                    </li>
-                    <li>
-                        <span class="event-date">1/12(日)</span>
-                        <span class="event-title">【江崎市】寒ブリ祭り・即売会（江崎漁港）</span>
-                    </li>
-                    <li>
-                        <span class="event-date">1/18(土)</span>
-                        <span class="event-title">【折鷲市】冬の星座観測会（折鷲高原レジャーランド）</span>
-                    </li>
-                </ul>
-            </section>
         </main>
 
         <aside class="sidebar-right">
@@ -135,7 +120,7 @@
                 <div id="logged-out-view">
                     <p>こんにちは、<b>ゲスト</b>さん</p>
                     <button class="btn-primary" id="login-btn">若狭IDでログイン</button>
-                    <p class="small-text"><a href="./register.html" id="signup-link">新規会員登録はこちら</a></p>
+                    <p class="small-text">※登録済みの方はこちら</p>
                 </div>
 
                 <div id="logged-in-view" style="display: none;">
@@ -144,7 +129,7 @@
                     <button class="btn-secondary" id="logout-btn">ログアウト</button>
                 </div>
             </div>
-
+            
             <div class="mission-box" id="mission-area" style="display: none;">
                 <button id="get-point-btn">🎁 今日の来県ポイントをもらう</button>
             </div>
@@ -158,9 +143,9 @@
                 </div>
                 <div class="ad-banner2">
                     <a style="text-decoration: none; text-align: center; display: block; color: #595959;" href="https://fictional-railway.github.io/Ifunesan-Bus/">
-                        <p>心にしまった夢、もう一度かなえてみませんか？</p>
-                        <p>伊舟山バスでは運転手を募集しております。</p>
-                        <strong>伊舟山交通</strong>
+                    <p>心にしまった夢、もう一度かなえてみませんか？</p>
+                    <p>伊舟山バスでは運転手を募集しております。</p>
+                    <strong>伊舟山交通</strong>
                     </a>
                 </div>
             </div>

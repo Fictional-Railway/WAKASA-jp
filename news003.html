@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WAKASA! - 若狭県総合ポータル</title>
+    <title>北陵～白央を結ぶバイパストンネル、開通式典 - WAKASA!</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="site-header">
         <div class="logo-area">
-            <h1><span class="red">WAKASA</span><span class="blue">!</span></h1>
+            <h1><a href="index.html" style="text-decoration:none; color:inherit;"><span class="red">WAKASA</span><span class="blue">!</span></a></h1>
             <p class="subtitle">若狭県最大級の地域ポータル</p>
         </div>
         <div class="header-info">
@@ -21,14 +21,14 @@
     <div class="status-bar2">
         <span class="label2">ライブ天気予報</span>
         <marquee scrollamount="3" class="weather-ticker" id="weather-display">
-            データを取得中... [沿岸(敦賀)]: --℃ / -- [中央(小浜)]: --℃ / -- [南部(舞鶴)]: --℃ / --
+            データを取得中... 
         </marquee>
     </div>
 
     <div class="status-bar">
         <span class="label">インフラ情報</span>
         <marquee scrollamount="5" class="ticker">
-            【鉄道】県内路線：通常運転　【道路】三都高速道路：兵府IC付近で工事渋滞　【電力】県内全域：安定供給中　【行政】兵府市役所：本日は20時まで窓口延長
+            【会員情報】システムメンテナンスのお知らせ：来月1日 AM2:00〜AM4:00
         </marquee>
     </div>
 
@@ -74,60 +74,36 @@
         <main class="content-center">
             
             <section class="news-section">
-                <div class="news-header">
-                    <h2>若狭トピックス</h2>
-                    <span class="update-time">最終更新: <span id="last-update">--:--</span></span>
+                <nav class="breadcrumb">
+                    <a href="index.html">トップ</a> &gt; <a href="#">若狭トピックス</a> &gt; 交通・インフラ
+                </nav>
+                <div class="news-header"><h2>県道15号「若狭中央バイパス」北陵～白央間が開通</h2></div>
+                <div class="article-meta">
+                    <span class="date">2025年12月31日 09:00</span>
+                    <span class="category">交通</span>
+                    <span class="author">若狭新聞・社会部</span>
                 </div>
-                <div class="tabs">
-                    <button class="tab active" data-category="main">主要</button>
-                    <button class="tab" data-category="local">地域</button>
-                    <button class="tab" data-category="economy">経済</button>
-                </div>
-                <ul class="news-list" id="news-container">
+
+                <p>若狭県内の中部を結ぶ主要幹線道路、県道15号線の難所を解消する「若狭中央バイパス」の<strong>北陵市～白央市間</strong>が本日開通した。午前10時からは白央トンネル北側坑口にて、若狭県知事や両市長が出席し、華やかな開通式典が執り行われた。</p>
+                
+                <p>今回の開通により、これまで険しい峠道を経由していた両市間の移動時間は約15分短縮され、冬期の積雪による通行止めのリスクも大幅に軽減されることとなる。</p>
+                    
+                <h3>全長2.8kmの「白央トンネル」</h3>
+                <p>バイパスの目玉となる「白央トンネル」は全長2,840メートル。最新のLED照明システムと、非常時の自動通報装置を備えた県内屈指の高規格トンネルだ。式典で知事は「北陵の工業エリアと白央の住宅エリアが直結されることで、地域経済に新たな風が吹くことを期待している」と祝辞を述べた。</p>
+                
+                <h3>地元住民の期待</h3>
+                <p>式典を見守った白央市在住のドライバーは「今までは冬場の峠越えが本当に怖かった。これで仕事の行き来がかなり楽になります」と笑顔で語った。バイパス全線では本日午後3時より一般車両の通行が開始される。</p>
+
+
+                <div class="related-news">
+                    <h4>【関連記事】</h4>
+                    <ul>
+                        <li><a href="#">「道の駅・はくおう」来春オープンに向けて建設急ピッチ</a></li>
+                        <li><a href="#">北陵市内の渋滞緩和へ、周辺道路の信号サイクルを調整</a></li>
                     </ul>
-            </section>
-
-            <section class="tools-section">
-                <h3>▼ くらしの便利ツール</h3>
-                <div class="tool-grid">
-                    <div class="tool-item">
-                        <a style="text-decoration: none;" href="./gomidashi.html">
-                            <div class="icon">🗑️</div>
-                            <div class="label">ゴミ出し</div>
-                        </a>
-                    </div>
-                    <div class="tool-item">
-                        <div class="icon">🏥</div>
-                        <div class="label">当番医</div>
-                    </div>
-                    <div class="tool-item">
-                        <div class="icon">🚌</div>
-                        <div class="label">バス位置</div>
-                    </div>
-                    <div class="tool-item">
-                        <div class="icon">🥬</div>
-                        <div class="label">直売所</div>
-                    </div>
                 </div>
             </section>
 
-            <section class="event-section">
-                <div class="box-header">注目のイベント情報</div>
-                <ul class="event-list">
-                    <li>
-                        <span class="event-date">1/5(日)</span>
-                        <span class="event-title">【若狭市】新春・大凧揚げ大会（若狭中央公園）</span>
-                    </li>
-                    <li>
-                        <span class="event-date">1/12(日)</span>
-                        <span class="event-title">【江崎市】寒ブリ祭り・即売会（江崎漁港）</span>
-                    </li>
-                    <li>
-                        <span class="event-date">1/18(土)</span>
-                        <span class="event-title">【折鷲市】冬の星座観測会（折鷲高原レジャーランド）</span>
-                    </li>
-                </ul>
-            </section>
         </main>
 
         <aside class="sidebar-right">
@@ -135,7 +111,7 @@
                 <div id="logged-out-view">
                     <p>こんにちは、<b>ゲスト</b>さん</p>
                     <button class="btn-primary" id="login-btn">若狭IDでログイン</button>
-                    <p class="small-text"><a href="./register.html" id="signup-link">新規会員登録はこちら</a></p>
+                    <p class="small-text">※登録済みの方はこちら</p>
                 </div>
 
                 <div id="logged-in-view" style="display: none;">
@@ -144,7 +120,7 @@
                     <button class="btn-secondary" id="logout-btn">ログアウト</button>
                 </div>
             </div>
-
+            
             <div class="mission-box" id="mission-area" style="display: none;">
                 <button id="get-point-btn">🎁 今日の来県ポイントをもらう</button>
             </div>
@@ -158,9 +134,9 @@
                 </div>
                 <div class="ad-banner2">
                     <a style="text-decoration: none; text-align: center; display: block; color: #595959;" href="https://fictional-railway.github.io/Ifunesan-Bus/">
-                        <p>心にしまった夢、もう一度かなえてみませんか？</p>
-                        <p>伊舟山バスでは運転手を募集しております。</p>
-                        <strong>伊舟山交通</strong>
+                    <p>心にしまった夢、もう一度かなえてみませんか？</p>
+                    <p>伊舟山バスでは運転手を募集しております。</p>
+                    <strong>伊舟山交通</strong>
                     </a>
                 </div>
             </div>
