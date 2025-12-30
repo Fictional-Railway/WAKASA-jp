@@ -84,6 +84,15 @@ a:hover {
     font-size: 13px;
 }
 
+.box-header2 {
+    background-color: #efefef;
+    padding: 4px 8px;
+    font-weight: bold;
+    border-left: 4px solid #aa00cc;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
 /* 左カラム：リスト */
 .link-list {
     list-style: none;
