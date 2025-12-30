@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規会員登録 - WAKASA!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-area">
+            <h1><a href="index.html" style="text-decoration:none; color:inherit;"><span class="red">WAKASA</span><span class="blue">!</span></a></h1>
+            <p class="subtitle">若狭県最大級の地域ポータル</p>
+        </div>
+        <div class="header-info">
+            <div id="clock-display" class="clock">0000年0月0日(月) 00:00:00</div>
+        </div>
+    </header>
+
+    <div class="status-bar2">
+        <span class="label2">ライブ天気予報</span>
+        <marquee scrollamount="3" class="weather-ticker" id="weather-display">
+            データを取得中... 
+        </marquee>
+    </div>
+
+    <div class="status-bar">
+        <span class="label">インフラ情報</span>
+        <marquee scrollamount="5" class="ticker">
+            【会員情報】システムメンテナンスのお知らせ：来月1日 AM2:00〜AM4:00
+        </marquee>
+    </div>
+
+    <div class="main-container">
+        
+        <nav class="sidebar-left">
+            <div class="box-header">主要エリア（三都）</div>
+            <ul class="link-list">
+                <li><a href="#">若狭市</a></li>
+                <li><a href="#">兵府市</a></li>
+                <li><a href="#">物部市</a></li>
+            </ul>
+
+            <div class="box-header">沿岸エリア</div>
+            <ul class="link-list">
+                <li><a href="#">香津村</a></li>
+                <li><a href="#">渡町</a></li>
+                <li><a href="#">汐崖町</a></li>
+                <li><a href="#">伊舟市</a></li>
+                <li><a href="#">早手川町</a></li>
+                <li><a href="#">矢坂町</a></li>
+                <li><a href="#">江崎市</a></li>
+                <li><a href="#">葉が山町</a></li>
+            </ul>
+
+            <div class="box-header">中部・南部エリア</div>
+            <ul class="link-list">
+                <li><a href="#">甲日市</a></li>
+                <li><a href="#">氏川町</a></li>
+                <li><a href="#">徳峰町</a></li>
+                <li><a href="#">入塚市</a></li>
+                <li><a href="#">深山町</a></li>
+                <li><a href="#">折鷲市</a></li>
+                <li><a href="#">北陵市</a></li>
+                <li><a href="#">白央市</a></li>
+                <li><a href="#">千鳴村</a></li>
+                <li><a href="#">朝渕村</a></li>
+                <li><a href="#">丹谷町</a></li>
+                <li><a href="#">小桟田町</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-center">
+            <article class="news-detail">
+                <nav class="breadcrumb">
+                    <a href="index.html">トップ</a> &gt; <a href="#">若狭トピックス</a> &gt; 経済・行政
+                </nav>
+
+                <h2 class="article-title">若狭市と兵府市、「双子都市構想」で合意　行政サービス共通化へ</h2>
+                
+                <div class="article-meta">
+                    <span class="date">2025年12月30日 15:42</span>
+                    <span class="category">行政</span>
+                    <span class="author">若狭新聞・行政取材班</span>
+                </div>
+
+                    <p>若狭県の県庁所在地である<strong>若狭市</strong>と、商業の拠点である<strong>兵府市</strong>は30日、両市の行政リソースを統合的に運用する「双子都市（ツイン・シティ）構想」に正式合意したと発表した。</p>
+                    
+                    <h3>背景と目的</h3>
+                    <p>若狭市と兵府市は隣接しており、通勤・通学圏として一体的な経済圏を形成している。今回の合意により、以下の項目について優先的に協議が進められる予定だ。</p>
+                    
+                    <ul class="article-ul">
+                        <li>住民票発行等の行政窓口の相互利用</li>
+                        <li>公共交通機関（若狭電鉄・バス）の共通定期券の導入</li>
+                        <li>災害時における物資補給の完全共同化</li>
+                        <li>公式キャラクターの「コラボ新衣装」制作</li>
+                    </ul>
+
+                    <h3>市長コメント</h3>
+                    <p>若狭市長は会見で「県内の二大都市が手を取り合うことで、若狭県全体の活性化につなげたい」と期待を寄せた。また、兵府市長も「もはや境界線を意識する必要はない。一つの大きな都市として未来を創る」と述べた。</p>
+                    
+                    <div class="related-news">
+                        <h4>【関連記事】</h4>
+                        <ul>
+                            <li><a href="#">若狭電鉄、ICカード「WAKAPON」のポイント還元率を引き上げ</a></li>
+                            <li><a href="#">兵府駅前再開発、2026年春に新駅ビル完成へ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <aside class="sidebar-right">
+            <div class="login-box" id="auth-box">
+                <div id="logged-out-view">
+                    <p>こんにちは、<b>ゲスト</b>さん</p>
+                    <button class="btn-primary" id="login-btn">若狭IDでログイン</button>
+                    <p class="small-text">※登録済みの方はこちら</p>
+                </div>
+
+                <div id="logged-in-view" style="display: none;">
+                    <p>こんにちは、<b id="user-display-name">---</b>さん</p>
+                    <p class="point-display">現在のポイント: <span id="user-points">0</span> pt</p>
+                    <button class="btn-secondary" id="logout-btn">ログアウト</button>
+                </div>
+            </div>
+            
+            <div class="mission-box" id="mission-area" style="display: none;">
+                <button id="get-point-btn">🎁 今日の来県ポイントをもらう</button>
+            </div>
+            <span style="margin: 1px;"></span>
+            <div class="ad-area">
+                <div class="box-header2">広告エリア</div>
+                <div class="ad-banner">
+                    <p>【求人】海が見えるオフィス</p>
+                    <p>詳細はこちらから</p>
+                    <strong>江崎ITパーク</strong>
+                </div>
+                <div class="ad-banner2">
+                    <a style="text-decoration: none; text-align: center; display: block; color: #595959;" href="https://fictional-railway.github.io/Ifunesan-Bus/">
+                    <p>心にしまった夢、もう一度かなえてみませんか？</p>
+                    <p>伊舟山バスでは運転手を募集しております。</p>
+                    <strong>伊舟山交通</strong>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p class="copyright">Copyright (C) 2025 WAKASA Prefecture Portal. All Rights Reserved.</p>
+        <p class="disclaimer">※このサイトは架空のものです。</p>
+        <a style="color: rgb(87, 182, 255);" href="https://fictional-railway.github.io/myrailways/">架空鉄道一覧はこちらから</a><br><br>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
