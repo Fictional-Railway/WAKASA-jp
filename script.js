@@ -121,23 +121,23 @@ document.addEventListener('DOMContentLoaded', () => {
             main: [
                 { title: "若狭市と兵府市、「双子都市構想」で合意", url: "news001.html", isNew: true, hasCam: false },
                 { title: "【速報】入塚市で国内最古級の土器片発見", url: "news002.html", isNew: false, hasCam: true },
-                { title: "江崎市名産「若狭サバ」過去最高値", url: "#", isNew: false, hasCam: false },
+                { title: "江崎市名産「若狭サバ」過去最高値", url: "news004.html", isNew: false, hasCam: false },
                 { title: "北陵〜白央の新トンネル、開通式典", url: "news003.html", isNew: false, hasCam: false },
-                { title: "（もっと見る...）", url: "#", isNew: false, hasCam: false }
+                { title: "（もっと見る...）", url: "news.html", isNew: false, hasCam: false }
             ],
             local: [
                 { title: "折鷲市で迷子のヤギが警察官と散歩", url: "#", isNew: true, hasCam: false },
                 { title: "汐崖町の展望台、リニューアルオープン", url: "#", isNew: false, hasCam: true },
                 { title: "香津村の「メロン祭り」予約開始", url: "#", isNew: false, hasCam: false },
                 { title: "深山町で「移動式スーパー」試験運行開始", url: "./news501.html", isNew: false, hasCam: true },
-                { title: "（もっと見る...）", url: "#", isNew: false, hasCam: false }
+                { title: "（もっと見る...）", url: "news.html", isNew: false, hasCam: false }
             ],
             economy: [
                 { title: "交通局物部トラム、黒字転換「AI導入が寄与」", url: "#", isNew: false, hasCam: false },
                 { title: "甲日市の高原リゾート、宿泊客数V字回復", url: "#", isNew: true, hasCam: false },
                 { title: "物部市の精密機械工場、世界シェア1位に", url: "#", isNew: false, hasCam: true },
                 { title: "若狭牛の海外輸出、過去最大を記録", url: "#", isNew: false, hasCam: false },
-                { title: "（もっと見る...）", url: "#", isNew: false, hasCam: false }
+                { title: "（もっと見る...）", url: "news.html", isNew: false, hasCam: false }
             ]
         };
 
