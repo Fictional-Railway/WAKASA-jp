@@ -180,7 +180,7 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
+    font-size: 11px;
     color: #555;
     border: 1px solid #bbb;
     cursor: pointer;
@@ -193,6 +193,31 @@ a:hover {
 .ad-banner strong {
     font-size: 10px;
     margin-top: 2px;
+    color: cornflowerblue;
+}
+
+.ad-banner2 {
+    background: #ddd;
+    height: 60px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    color: #555;
+    border: 1px solid #bbb;
+    cursor: pointer;
+}
+
+.ad-banner2 p {
+    margin: 0px 0;
+}
+
+.ad-banner2 strong {
+    font-size: 10px;
+    margin-top: 2px;
+    color: #f2a500;
 }
 
 .bbs-list {
