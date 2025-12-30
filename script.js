@@ -315,3 +315,24 @@ function addStayPoints() {
 // タイマー開始
 startStayPointTimer();
 });
+
+// ...（以前の時計・天気・ログイン機能はそのまま保持）...
+
+// ゴミ出しページ独自の処理
+document.addEventListener('DOMContentLoaded', () => {
+    const areaSelect = document.getElementById('area-select');
+    if (areaSelect) {
+        areaSelect.addEventListener('change', (e) => {
+            alert(`【システム】${e.target.selectedOptions[0].text}のデータを読み込みます。`);
+            // ここで本来はデータを書き換えます
+        });
+    }
+
+    // カレンダー内のラベルをクリックしたら詳細を表示
+    const labels = document.querySelectorAll('.label-g');
+    labels.forEach(label => {
+        label.addEventListener('click', () => {
+            alert(`【詳細】${label.textContent}ゴミの収集日です。\n指定の袋に入れて朝8時までに出してください。`);
+        });
+    });
+});

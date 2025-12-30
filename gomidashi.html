@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【公式】令和7年度ゴミ収集カレンダー - WAKASA!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-area">
+            <h1><a href="index.html" style="text-decoration:none;"><span class="red">WAKASA</span><span class="blue">!</span></a></h1>
+            <p class="subtitle">若狭県最大級の地域ポータル</p>
+        </div>
+        <div class="header-info">
+            <div id="clock-display" class="clock">0000年0月0日(月) 00:00:00</div>
+        </div>
+    </header>
+
+    <div class="status-bar2">
+        <span class="label2">ライブ天気予報</span>
+        <marquee scrollamount="3" class="weather-ticker" id="weather-display">
+            データを取得中... [沿岸(敦賀)]: --℃ / -- [中央(小浜)]: --℃ / -- [南部(舞鶴)]: --℃ / --
+        </marquee>
+    </div>
+
+    <div class="status-bar">
+        <span class="label">インフラ情報</span>
+        <marquee scrollamount="5" class="ticker">
+            【鉄道】県内路線：通常運転　【道路】三都高速道路：兵府IC付近で工事渋滞　【電力】県内全域：安定供給中
+        </marquee>
+    </div>
+
+    <div class="main-container">
+        <nav class="sidebar-left">
+            <div class="box-header">主要エリア</div>
+            <ul class="link-list">
+                <li><a href="#">若狭市（県庁）</a></li>
+                <li><a href="#">兵府市</a></li>
+                <li><a href="#">北陵市</a></li>
+                <li><a href="#">白央市</a></li>
+                <li><a href="#">入塚市</a></li>
+            </ul>
+            <div class="box-header">沿岸エリア</div>
+            <ul class="link-list">
+                <li><a href="#">渡町</a></li>
+                <li><a href="#">江崎市</a></li>
+                <li><a href="#">汐崖町</a></li>
+                <li><a href="#">物部市</a></li>
+            </ul>
+            <div class="box-header">山間エリア</div>
+            <ul class="link-list">
+                <li><a href="#">深山市</a></li>
+                <li><a href="#">徳峰町</a></li>
+                <li><a href="#">折鷲市</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-center">
+            <section class="news-section">
+                <div class="news-header">
+                    <h2>🗑️ 令和7年度(2025) ゴミ収集カレンダー</h2>
+                </div>
+                
+                <p style="font-size:12px; color:#d32f2f; background:#fff8f8; padding:5px; border:1px solid #ffcccc;">
+                    ※若狭市中央地区の設定です。お住まいの地区によって曜日が異なりますのでご注意ください。
+                </p>
+
+                <div class="month-jump">
+                    Jump: <a href="#m1">1月</a> | <a href="#m2">2月</a> | <a href="#m3">3月</a> | <a href="#m4">4月</a> | <a href="#m5">5月</a> | <a href="#m6">6月</a> | <a href="#m7">7月</a> | <a href="#m8">8月</a> | <a href="#m9">9月</a> | <a href="#m10">10月</a> | <a href="#m11">11月</a> | <a href="#m12">12月</a>
+                </div>
+
+                <h3 id="m1" class="month-title">■ 1月 (January)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td></td><td></td><td><span class="day">1</span><br><span class="label-g g-holiday">休</span></td><td><span class="day">2</span><br><span class="label-g g-holiday">休</span></td><td><span class="day">3</span><br><span class="label-g g-holiday">休</span></td><td class="sat"><span class="day">4</span></td></tr>
+                        <tr><td class="sun"><span class="day">5</span></td><td><span class="day">6</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">7</span><br><span class="label-g g-res">資源</span></td><td><span class="day">8</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">9</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">10</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">11</span></td></tr>
+                        <tr><td class="sun"><span class="day">12</span></td><td><span class="day">13</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">14</span></td><td><span class="day">15</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">16</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">17</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">18</span></td></tr>
+                        <tr><td class="sun"><span class="day">19</span></td><td><span class="day">20</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">21</span><br><span class="label-g g-res">資源</span></td><td><span class="day">22</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">23</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">24</span></td><td class="sat"><span class="day">25</span></td></tr>
+                        <tr><td class="sun"><span class="day">26</span></td><td><span class="day">27</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">28</span></td><td><span class="day">29</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">30</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">31</span></td><td></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="m2" class="month-title">■ 2月 (February)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="sat"><span class="day">1</span></td></tr>
+                        <tr><td class="sun"><span class="day">2</span></td><td><span class="day">3</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">4</span><br><span class="label-g g-res">資源</span></td><td><span class="day">5</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">6</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">7</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">8</span></td></tr>
+                        <tr><td class="sun"><span class="day">9</span></td><td><span class="day">10</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">11</span></td><td><span class="day">12</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">13</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">14</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">15</span></td></tr>
+                        <tr><td class="sun"><span class="day">16</span></td><td><span class="day">17</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">18</span><br><span class="label-g g-res">資源</span></td><td><span class="day">19</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">20</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">21</span></td><td class="sat"><span class="day">22</span></td></tr>
+                        <tr><td class="sun"><span class="day">23</span></td><td><span class="day">24</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">25</span></td><td><span class="day">26</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">27</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">28</span></td><td></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="m3" class="month-title">■ 3月 (March)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="sat"><span class="day">1</span></td></tr>
+                        <tr><td class="sun"><span class="day">2</span></td><td><span class="day">3</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">4</span><br><span class="label-g g-res">資源</span></td><td><span class="day">5</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">6</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">7</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">8</span></td></tr>
+                        <tr><td class="sun"><span class="day">9</span></td><td><span class="day">10</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">11</span></td><td><span class="day">12</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">13</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">14</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">15</span></td></tr>
+                        <tr><td class="sun"><span class="day">16</span></td><td><span class="day">17</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">18</span><br><span class="label-g g-res">資源</span></td><td><span class="day">19</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">20</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">21</span></td><td class="sat"><span class="day">22</span></td></tr>
+                        <tr><td class="sun"><span class="day">23</span></td><td><span class="day">24</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">25</span></td><td><span class="day">26</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">27</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">28</span></td><td class="sat"><span class="day">29</span></td></tr>
+                        <tr><td class="sun"><span class="day">30</span></td><td><span class="day">31</span><br><span class="label-g g-burn">可燃</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="m4" class="month-title">■ 4月 (April)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td></td><td><span class="day">1</span><br><span class="label-g g-res">資源</span></td><td><span class="day">2</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">3</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">4</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">5</span></td></tr>
+                        <tr><td class="sun"><span class="day">6</span></td><td><span class="day">7</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">8</span></td><td><span class="day">9</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">10</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">11</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">12</span></td></tr>
+                        <tr><td class="sun"><span class="day">13</span></td><td><span class="day">14</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">15</span><br><span class="label-g g-res">資源</span></td><td><span class="day">16</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">17</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">18</span></td><td class="sat"><span class="day">19</span></td></tr>
+                        <tr><td class="sun"><span class="day">20</span></td><td><span class="day">21</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">22</span></td><td><span class="day">23</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">24</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">25</span></td><td class="sat"><span class="day">26</span></td></tr>
+                        <tr><td class="sun"><span class="day">27</span></td><td><span class="day">28</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">29</span></td><td><span class="day">30</span><br><span class="label-g g-pla">プラ</span></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="m5" class="month-title">■ 5月 (May)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td></td><td></td><td></td><td><span class="day">1</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">2</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">3</span></td></tr>
+                        <tr><td class="sun"><span class="day">4</span></td><td><span class="day">5</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">6</span></td><td><span class="day">7</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">8</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">9</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">10</span></td></tr>
+                        <tr><td class="sun"><span class="day">11</span></td><td><span class="day">12</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">13</span><br><span class="label-g g-res">資源</span></td><td><span class="day">14</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">15</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">16</span></td><td class="sat"><span class="day">17</span></td></tr>
+                        <tr><td class="sun"><span class="day">18</span></td><td><span class="day">19</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">20</span></td><td><span class="day">21</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">22</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">23</span></td><td class="sat"><span class="day">24</span></td></tr>
+                        <tr><td class="sun"><span class="day">25</span></td><td><span class="day">26</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">27</span><br><span class="label-g g-res">資源</span></td><td><span class="day">28</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">29</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">30</span></td><td class="sat"><span class="day">31</span></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="m6" class="month-title">■ 6月 (June)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td class="sun"><span class="day">1</span></td><td><span class="day">2</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">3</span></td><td><span class="day">4</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">5</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">6</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">7</span></td></tr>
+                        <tr><td class="sun"><span class="day">8</span></td><td><span class="day">9</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">10</span><br><span class="label-g g-res">資源</span></td><td><span class="day">11</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">12</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">13</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">14</span></td></tr>
+                        <tr><td class="sun"><span class="day">15</span></td><td><span class="day">16</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">17</span></td><td><span class="day">18</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">19</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">20</span></td><td class="sat"><span class="day">21</span></td></tr>
+                        <tr><td class="sun"><span class="day">22</span></td><td><span class="day">23</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">24</span><br><span class="label-g g-res">資源</span></td><td><span class="day">25</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">26</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">27</span></td><td class="sat"><span class="day">28</span></td></tr>
+                        <tr><td class="sun"><span class="day">29</span></td><td><span class="day">30</span><br><span class="label-g g-burn">可燃</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="m7" class="month-title">■ 7月 (July)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td></td><td><span class="day">1</span></td><td><span class="day">2</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">3</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">4</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">5</span></td></tr>
+                        <tr><td class="sun"><span class="day">6</span></td><td><span class="day">7</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">8</span><br><span class="label-g g-res">資源</span></td><td><span class="day">9</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">10</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">11</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">12</span></td></tr>
+                        <tr><td class="sun"><span class="day">13</span></td><td><span class="day">14</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">15</span></td><td><span class="day">16</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">17</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">18</span></td><td class="sat"><span class="day">19</span></td></tr>
+                        <tr><td class="sun"><span class="day">20</span></td><td><span class="day">21</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">22</span><br><span class="label-g g-res">資源</span></td><td><span class="day">23</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">24</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">25</span></td><td class="sat"><span class="day">26</span></td></tr>
+                        <tr><td class="sun"><span class="day">27</span></td><td><span class="day">28</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">29</span></td><td><span class="day">30</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">31</span><br><span class="label-g g-burn">可燃</span></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="m8" class="month-title">■ 8月 (August)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td><span class="day">1</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">2</span></td></tr>
+                        <tr><td class="sun"><span class="day">3</span></td><td><span class="day">4</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">5</span><br><span class="label-g g-res">資源</span></td><td><span class="day">6</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">7</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">8</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">9</span></td></tr>
+                        <tr><td class="sun"><span class="day">10</span></td><td><span class="day">11</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">12</span></td><td><span class="day">13</span><br><span class="label-g g-holiday">休</span></td><td><span class="day">14</span><br><span class="label-g g-holiday">休</span></td><td><span class="day">15</span><br><span class="label-g g-holiday">休</span></td><td class="sat"><span class="day">16</span></td></tr>
+                        <tr><td class="sun"><span class="day">17</span></td><td><span class="day">18</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">19</span><br><span class="label-g g-res">資源</span></td><td><span class="day">20</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">21</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">22</span></td><td class="sat"><span class="day">23</span></td></tr>
+                        <tr><td class="sun"><span class="day">24</span></td><td><span class="day">25</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">26</span></td><td><span class="day">27</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">28</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">29</span></td><td class="sat"><span class="day">30</span></td></tr>
+                        <tr><td class="sun"><span class="day">31</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="m9" class="month-title">■ 9月 (September)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td><span class="day">1</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">2</span><br><span class="label-g g-res">資源</span></td><td><span class="day">3</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">4</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">5</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">6</span></td></tr>
+                        <tr><td class="sun"><span class="day">7</span></td><td><span class="day">8</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">9</span></td><td><span class="day">10</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">11</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">12</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">13</span></td></tr>
+                        <tr><td class="sun"><span class="day">14</span></td><td><span class="day">15</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">16</span><br><span class="label-g g-res">資源</span></td><td><span class="day">17</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">18</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">19</span></td><td class="sat"><span class="day">20</span></td></tr>
+                        <tr><td class="sun"><span class="day">21</span></td><td><span class="day">22</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">23</span></td><td><span class="day">24</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">25</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">26</span></td><td class="sat"><span class="day">27</span></td></tr>
+                        <tr><td class="sun"><span class="day">28</span></td><td><span class="day">29</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">30</span><br><span class="label-g g-res">資源</span></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="m10" class="month-title">■ 10月 (October)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td></td><td></td><td><span class="day">1</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">2</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">3</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">4</span></td></tr>
+                        <tr><td class="sun"><span class="day">5</span></td><td><span class="day">6</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">7</span></td><td><span class="day">8</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">9</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">10</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">11</span></td></tr>
+                        <tr><td class="sun"><span class="day">12</span></td><td><span class="day">13</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">14</span><br><span class="label-g g-res">資源</span></td><td><span class="day">15</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">16</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">17</span></td><td class="sat"><span class="day">18</span></td></tr>
+                        <tr><td class="sun"><span class="day">19</span></td><td><span class="day">20</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">21</span></td><td><span class="day">22</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">23</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">24</span></td><td class="sat"><span class="day">25</span></td></tr>
+                        <tr><td class="sun"><span class="day">26</span></td><td><span class="day">27</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">28</span><br><span class="label-g g-res">資源</span></td><td><span class="day">29</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">30</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">31</span></td><td></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="m11" class="month-title">■ 11月 (November)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="sat"><span class="day">1</span></td></tr>
+                        <tr><td class="sun"><span class="day">2</span></td><td><span class="day">3</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">4</span></td><td><span class="day">5</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">6</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">7</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">8</span></td></tr>
+                        <tr><td class="sun"><span class="day">9</span></td><td><span class="day">10</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">11</span><br><span class="label-g g-res">資源</span></td><td><span class="day">12</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">13</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">14</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">15</span></td></tr>
+                        <tr><td class="sun"><span class="day">16</span></td><td><span class="day">17</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">18</span></td><td><span class="day">19</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">20</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">21</span></td><td class="sat"><span class="day">22</span></td></tr>
+                        <tr><td class="sun"><span class="day">23</span></td><td><span class="day">24</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">25</span><br><span class="label-g g-res">資源</span></td><td><span class="day">26</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">27</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">28</span></td><td class="sat"><span class="day">29</span></td></tr>
+                        <tr><td class="sun"><span class="day">30</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="m12" class="month-title">■ 12月 (December)</h3>
+                <table class="garbage-table">
+                    <thead><tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr></thead>
+                    <tbody>
+                        <tr><td></td><td><span class="day">1</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">2</span></td><td><span class="day">3</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">4</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">5</span><br><span class="label-g g-non">不燃</span></td><td class="sat"><span class="day">6</span></td></tr>
+                        <tr><td class="sun"><span class="day">7</span></td><td><span class="day">8</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">9</span><br><span class="label-g g-res">資源</span></td><td><span class="day">10</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">11</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">12</span><br><span class="label-g g-bin">有害</span></td><td class="sat"><span class="day">13</span></td></tr>
+                        <tr><td class="sun"><span class="day">14</span></td><td><span class="day">15</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">16</span></td><td><span class="day">17</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">18</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">19</span></td><td class="sat"><span class="day">20</span></td></tr>
+                        <tr><td class="sun"><span class="day">21</span></td><td><span class="day">22</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">23</span><br><span class="label-g g-res">資源</span></td><td><span class="day">24</span><br><span class="label-g g-pla">プラ</span></td><td><span class="day">25</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">26</span></td><td class="sat"><span class="day">27</span></td></tr>
+                        <tr><td class="sun"><span class="day">28</span></td><td><span class="day">29</span><br><span class="label-g g-burn">可燃</span></td><td><span class="day">30</span><br><span class="label-g g-holiday">休</span></td><td><span class="day">31</span><br><span class="label-g g-holiday">休</span></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+
+                <div class="notice-box">
+                    <p><b>【重要】出し方のルール</b></p>
+                    <ul>
+                        <li>朝8時30分までに、指定の「若狭県公式ゴミ袋」で出してください。</li>
+                        <li>お盆期間（8/13-15）および年末年始（12/30-1/3）は収集がありません。</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar-right">
+            <div class="login-box" id="auth-box">
+                <div id="logged-out-view">
+                    <p>こんにちは、<b>ゲスト</b>さん</p>
+                    <button class="btn-primary" id="login-btn">若狭IDでログイン</button>
+                    <p class="small-text"><a href="#">新規会員登録はこちら</a></p>
+                </div>
+                <div id="logged-in-view" style="display: none;">
+                    <p>こんにちは、<b id="user-display-name">---</b>さん</p>
+                    <p class="point-display">現在のポイント: <span id="user-points">0</span> pt</p>
+                    <button class="btn-secondary" id="logout-btn">ログアウト</button>
+                </div>
+            </div>
+            <div class="ad-area">
+                <div class="box-header2">広告エリア</div>
+                <div class="ad-banner">
+                    <p>心にしまった夢、もう一度かなえてみませんか？</p>
+                    <strong>伊舟山交通</strong>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p class="copyright">Copyright (C) 2025 WAKASA Prefecture Portal. All Rights Reserved.</p>
+        <p class="disclaimer">※このサイトは架空のものです。</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
