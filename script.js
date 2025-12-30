@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { title: "（もっと見る...）", url: "#", isNew: false, hasCam: false }
             ],
             economy: [
-                { title: "若狭電鉄、黒字転換「AI導入が寄与」", url: "#", isNew: false, hasCam: false },
+                { title: "交通局物部トラム、黒字転換「AI導入が寄与」", url: "#", isNew: false, hasCam: false },
                 { title: "甲日市の高原リゾート、宿泊客数V字回復", url: "#", isNew: true, hasCam: false },
                 { title: "物部市の精密機械工場、世界シェア1位に", url: "#", isNew: false, hasCam: true },
                 { title: "若狭牛の海外輸出、過去最大を記録", url: "#", isNew: false, hasCam: false },
@@ -246,24 +246,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const newsData = {
     main: [
-        { date: "12/31", title: "【生活】深山町で「移動式スーパー」の試験運行開始、買い物難民を支援", url: "news_004.html", isNew: false },
-        { date: "12/30", title: "【文化】物部神社の「100年に一度の修復」が完了、一般公開へ", url: "#", isNew: false },
-        { date: "12/29", title: "【経済】江崎市のIT企業が「VR出社」を導入、移住者倍増を狙う", url: "#", isNew: false },
-        { date: "12/28", title: "【スポーツ】丹谷町出身の若手力士が新十両昇進、町民から喜びの声", url: "#", isNew: false },
-        { date: "12/27", title: "【行政】若狭県、次世代半導体工場の誘致計画を正式発表", url: "#", isNew: false },
-        { date: "12/26", title: "【交通】三都高速道路のスマートIC設置工事が完了、来月から運用", url: "#", isNew: false },
-        { date: "12/25", title: "【医療】若狭医科大学、難病治療の新たな臨床試験に成功", url: "#", isNew: false },
-        { date: "12/24", title: "【防災】県内全域で大規模地震を想定した一斉防災訓練を実施", url: "#", isNew: false }
+                { date: "12/30", title: "【速報】入塚市で国内最古級の土器片発見", url: "news002.html", isNew: false },
+        { date: "12/29", title: "若狭市と兵府市、「双子都市構想」で合意", url: "news001.html", isNew: false },
+        { date: "12/29", title: "江崎市名産「若狭サバ」過去最高値", url: "news004.html", isNew: false },
+        { date: "12/28", title: "北陵～白央の新トンネル、開通式典", url: "news003.html", isNew: false },
+        { date: "12/27", title: "国道563号高生交差点付近で乗用車4台が絡む事故、7人が負傷", url: "news005.html", isNew: false },
+        { date: "12/25", title: "三都高速道路のスマートIC設置工事が完了、来月から運用", url: "news006.html", isNew: false },
+        { date: "12/24", title: "若狭医科大学、難病治療の新たな臨床試験に成功", url: "news007.html", isNew: false },
+        { date: "12/23", title: "葉が山駅前の雑貨店「風天楼」が閉店　56年の歴史に幕", url: "news008.html", isNew: false }
     ],
     local: [
-        { date: "12/31", title: "【グルメ】香津村名産「黄金メロン」の初競り、一玉5万円の最高値", url: "#", isNew: false },
-        { date: "12/30", title: "【観光】汐崖町「絶景スカイテラス」がオープン、予約殺到", url: "#", isNew: false },
-        { date: "12/29", title: "【動物】折鷲市で警察官と「迷子のヤギ」が仲良く散歩？癒やされると話題", url: "#", isNew: false },
-        { date: "12/28", title: "【行事】千鳴村で「1,000個の竹灯籠」ライトアップ、2日まで開催", url: "#", isNew: false },
-        { date: "12/27", title: "【自然】早手川町の渓谷で「氷のカーテン」が出現、冬の風物詩に", url: "#", isNew: false },
-        { date: "12/26", title: "【話題】矢坂町の商店街で「昭和レトロ市」が開催、若者にも人気", url: "#", isNew: false },
-        { date: "12/25", title: "【子育て】白央市、独自の「出産お祝い給付金」を大幅増額へ", url: "#", isNew: false },
-        { date: "12/24", title: "【アート】小桟田町の廃校を利用した現代アート展が閉幕、来場者最多", url: "#", isNew: false }
+        { date: "12/31", title: "香津村名産「黄金メロン」の初競り、一玉5万円の最高値", url: "#", isNew: false },
+        { date: "12/30", title: "汐崖町「絶景スカイテラス」がオープン、予約殺到", url: "#", isNew: false },
+        { date: "12/29", title: "折鷲市で警察官と「迷子のヤギ」が仲良く散歩？癒やされると話題", url: "#", isNew: false },
+        { date: "12/28", title: "千鳴村で「1,000個の竹灯籠」ライトアップ、2日まで開催", url: "#", isNew: false },
+        { date: "12/27", title: "早手川町の渓谷で「氷のカーテン」が出現、冬の風物詩に", url: "#", isNew: false },
+        { date: "12/26", title: "矢坂町の商店街で「昭和レトロ市」が開催、若者にも人気", url: "#", isNew: false },
+        { date: "12/25", title: "白央市、独自の「出産お祝い給付金」を大幅増額へ", url: "#", isNew: false },
+        { date: "12/24", title: "小桟田町の廃校を利用した現代アート展が閉幕、来場者最多", url: "#", isNew: false }
     ],
     economy: [
         { date: "12/30", title: "【鉄道】若狭電鉄、昭和レトロな「復刻版車両」の期間限定運行を開始", url: "#", isNew: false },
