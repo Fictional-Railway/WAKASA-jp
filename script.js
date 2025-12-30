@@ -119,17 +119,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (newsContainer) {
         const newsData = {
             main: [
-                { title: "若狭市と兵府市、「双子都市構想」で合意", url: "news_001.html", isNew: true, hasCam: false },
-                { title: "【速報】入塚市で国内最古級の土器片発見", url: "news_002.html", isNew: false, hasCam: false },
-                { title: "江崎市沖で「巨大クリスタル鯖」最高値", url: "#", isNew: false, hasCam: false },
-                { title: "北陵〜白央の新トンネル、開通式典", url: "news_003.html", isNew: false, hasCam: false },
+                { title: "若狭市と兵府市、「双子都市構想」で合意", url: "news001.html", isNew: true, hasCam: false },
+                { title: "【速報】入塚市で国内最古級の土器片発見", url: "news002.html", isNew: false, hasCam: true },
+                { title: "江崎市名産「若狭サバ」過去最高値", url: "#", isNew: false, hasCam: false },
+                { title: "北陵〜白央の新トンネル、開通式典", url: "news003.html", isNew: false, hasCam: false },
                 { title: "（もっと見る...）", url: "#", isNew: false, hasCam: false }
             ],
             local: [
-                { title: "渡町で伝統の「潮干狩り大会」開催", url: "#", isNew: true, hasCam: false },
+                { title: "折鷲市で迷子のヤギが警察官と散歩", url: "#", isNew: true, hasCam: false },
                 { title: "汐崖町の展望台、リニューアルオープン", url: "#", isNew: false, hasCam: true },
                 { title: "香津村の「メロン祭り」予約開始", url: "#", isNew: false, hasCam: false },
-                { title: "折鷲市で迷子のヤギが警察官と散歩", url: "#", isNew: false, hasCam: true },
+                { title: "深山町で「移動式スーパー」試験運行開始", url: "./news501.html", isNew: false, hasCam: true },
                 { title: "（もっと見る...）", url: "#", isNew: false, hasCam: false }
             ],
             economy: [
