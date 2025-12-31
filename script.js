@@ -191,21 +191,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- ニュースデータ定義 ---
 const newsData = {
     main: [
-        { date: "12/30", title: "【速報】入塚市で国内最古級の土器片発見", url: "#", isNew: false },
-        { date: "12/29", title: "若狭市と兵府市、「双子都市構想」で合意", url: "#", isNew: false },
-        { date: "12/29", title: "江崎市名産「若狭サバ」過去最高値", url: "#", isNew: false },
-        { date: "12/28", title: "北陵～白央の新トンネル、開通式典", url: "#", isNew: false },
-        { date: "12/27", title: "国道563号高生交差点付近で乗用車4台が絡む事故、7人が負傷", url: "#", isNew: false },
-        { date: "12/25", title: "三都高速道路のスマートIC設置工事が完了、来月から運用", url: "#", isNew: false },
-        { date: "12/24", title: "若狭医科大学、難病治療の新たな臨床試験に成功", url: "#", isNew: false },
-        { date: "12/23", title: "葉が山駅前の雑貨店「風天楼」が閉店　56年の歴史に幕", url: "#", isNew: false },
-        { date: "12/22", title: "兵府市内で特殊詐欺を防いだ「中学生3人」に署長感謝状", url: "#", isNew: false },
-        { date: "12/21", title: "県営馬土川線「自動運転」の公開走行試験に成功、2027年導入目指す", url: "#", isNew: false },
-        { date: "12/20", title: "国鉄三都線「立幹駅」で人身事故　上下線で1時間半運転見合わせ", url: "#", isNew: false }
+        { date: "12/30", title: "【速報】入塚市で国内最古級の土器片発見", url: "news002.html", isNew: false },
+        { date: "12/29", title: "若狭市と兵府市、「双子都市構想」で合意", url: "news001.html", isNew: false },
+        { date: "12/29", title: "江崎市名産「若狭サバ」過去最高値", url: "news004.html", isNew: false },
+        { date: "12/28", title: "北陵～白央の新トンネル、開通式典", url: "news003.html", isNew: false },
+        { date: "12/27", title: "国道563号高生交差点付近で乗用車4台が絡む事故、7人が負傷", url: "news005.html", isNew: false },
+        { date: "12/25", title: "三都高速道路のスマートIC設置工事が完了、来月から運用", url: "news006.html", isNew: false },
+        { date: "12/24", title: "若狭医科大学、難病治療の新たな臨床試験に成功", url: "news007.html", isNew: false },
+        { date: "12/23", title: "葉が山駅前の雑貨店「風天楼」が閉店　56年の歴史に幕", url: "news008.html", isNew: false },
+        { date: "12/22", title: "兵府市内で特殊詐欺を防いだ「中学生3人」に署長感謝状", url: "news009.html", isNew: false },
+        { date: "12/21", title: "県営馬土川線「自動運転」の公開走行試験に成功、2027年導入目指す", url: "news010.html", isNew: false },
+        { date: "12/20", title: "国鉄三都線「立幹駅」で人身事故　上下線で1時間半運転見合わせ", url: "news011.html", isNew: false }
     ],
     local: [
-        { date: "12/31", title: "若狭市七宮区で大規模なカウントダウンイベント準備進む", url: "#", isNew: true },
-        { date: "12/30", title: "慶堂区の電脳街、年末恒例のジャンク市に過去最多の人出", url: "#", isNew: true },
+        { date: "12/31", title: "若狭市七宮区で大規模なカウントダウンイベント準備進む", url: "#", isNew: false },
+        { date: "12/30", title: "慶堂区の電脳街、年末恒例のジャンク市に過去最多の人出", url: "#", isNew: false },
         { date: "12/29", title: "西平区のショッピングモールに「若狭市営出張窓口」が開設", url: "#", isNew: false },
         { date: "12/28", title: "日澤区〜明区間でのWi-Fi提供エリアを拡大、若狭市営地下鉄が発表", url: "#", isNew: false },
         { date: "12/27", title: "滝ヶ谷区の渓谷公園で冬のライトアップ。若狭駅から臨時バス運行", url: "#", isNew: false },

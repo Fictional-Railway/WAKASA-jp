@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物部市 - WAKASA! 若狭県総合ポータル</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-area">
+            <h1><a href="../index.html" style="text-decoration: none;"><span class="red">WAKASA</span><span class="blue">!</span></a></h1>
+            <p class="subtitle">若狭県最大級の地域ポータル</p>
+        </div>
+        <div class="header-info">
+            <div id="clock-display" class="clock">0000年0月0日(月) 00:00:00</div>
+        </div>
+    </header>
+
+    <div class="status-bar2">
+        <span class="label2">ライブ天気予報</span>
+        <marquee scrollamount="3" class="weather-ticker" id="weather-display">
+            データを取得中...
+        </marquee>
+    </div>
+
+    <div class="status-bar">
+        <span class="label">インフラ情報</span>
+        <marquee scrollamount="5" class="ticker">
+            【路面電車】物部市電：海岸線は高波の影響により一部区間で徐行運転中　【港湾】物部中央港：大型貨物船の入港に伴い周辺道路で混雑が予想されます
+        </marquee>
+    </div>
+
+    <div class="main-container">
+        
+        <nav class="sidebar-left">
+            <div class="box-header">主要エリア（三都）</div>
+            <ul class="link-list">
+                <li><a href="wakasa.html">若狭市</a></li>
+                <li><a href="byobu.html">兵府市</a></li>
+                <li><a href="mononobe.html">物部市</a></li>
+            </ul>
+
+            <div class="box-header">沿岸エリア</div>
+            <ul class="link-list">
+                <li><a href="#">香津村</a></li>
+                <li><a href="#">渡町</a></li>
+                <li><a href="#">汐崖町</a></li>
+                <li><a href="#">伊舟市</a></li>
+                <li><a href="#">早手川町</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-center">
+            
+            <section class="city-intro-section" style="border: 1px solid #ccc; padding: 15px; background: #fdfaf5; margin-bottom: 20px; border-left: 10px solid #006633;">
+                <h2 style="margin-top: 0; color: #006633; border-bottom: 2px solid #006633;">物部市 <span style="font-size: 0.6em; color: #666;">Mononobe City</span></h2>
+                <p>若狭県北部に位置する港湾都市。日本海に面した広大な工業地帯と、県内最大の物部漁港を持ち、夏には多くの観光客で賑わう「物部中央海水浴場」も有名です。市街地には今も路面電車が走り、情緒ある景観を残しています。</p>
+                
+                <table style="width: 100%; font-size: 12px; border-collapse: collapse; margin-top: 10px;">
+                    <tr>
+                        <th style="background: #eee; border: 1px solid #ccc; padding: 5px; width: 20%;">人口</th>
+                        <td style="border: 1px solid #ccc; padding: 5px;">約42万人</td>
+                        <th style="background: #eee; border: 1px solid #ccc; padding: 5px; width: 20%;">名産品</th>
+                        <td style="border: 1px solid #ccc; padding: 5px;">物部ガニ・鉄鋼製品</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="area-guide" style="margin-bottom: 20px;">
+                <div class="box-header">物部市 エリアガイド</div>
+                <div style="padding: 10px; background: #fff; border: 1px solid #ccc;">
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px;">
+                        <li style="margin-bottom: 8px;">🚢 <b>物部港・臨海工業地帯</b><br><small>若狭県の経済を支える重工業の拠点。夜景スポットとしても人気。</small></li>
+                        <li style="margin-bottom: 8px;">🚋 <b>物部旧市街（路面電車沿線）</b><br><small>古い蔵や商店が並び、レトロな路面電車がゆっくりと街を抜けます。</small></li>
+                        <li style="margin-bottom: 8px;">🏖️ <b>サンセットビーチ物部</b><br><small>県内屈指の透明度を誇る海水浴場。若者や家族連れで賑わいます。</small></li>
+                        <li style="margin-bottom: 0;">🐟 <b>物部朝市エリア</b><br><small>毎朝獲れたての魚介類が並ぶ、物部の台所。海鮮丼が絶品。</small></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="news-section">
+                <div class="news-header" style="border-bottom: 2px solid #006633;">
+                    <h2>物部市トピックス</h2>
+                </div>
+                <ul class="news-list" id="city-news-list">
+                    </ul>
+            </section>
+
+            <section class="local-links">
+                <div class="box-header">市民のひろば</div>
+                <div style="background: #fff; border: 1px solid #ccc; padding: 10px;">
+                    <ul class="link-grid">
+                        <li><a href="#">物部市電・運行ダイヤ案内</a></li>
+                        <li><a href="#">物部漁港・競り見学予約</a></li>
+                        <li><a href="#">工場夜景クルーズ・チケット</a></li>
+                        <li><a href="#">海水浴場・駐車場空き状況</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+
+        <aside class="sidebar-right">
+            <div class="ad-area">
+                <p class="ad-label">広告</p>
+                <div class="ad-banner" style="background: #003366; color: #fff; padding: 10px; border: 2px solid #ccc;">
+                    <p style="margin:0; font-weight: bold;">物部重工 株式会社</p>
+                    <p style="margin:5px 0; font-size: 10px;">世界へ届ける、物部の技術。<br>【中途採用強化中】</p>
+                </div>
+                <div class="ad-banner2">
+                    <p>冬の味覚、解禁！</p>
+                    <p><b>物部カニ祭り</b> 開催中</p>
+                    <p style="font-size: 10px;">会場：物部中央市場</p>
+                </div>
+            </div>
+
+            <div class="event-box">
+                <div class="box-header2">物部の行事</div>
+                <ul class="small-list">
+                    <li>01/02：初荷・初競り式</li>
+                    <li>01/15：物部神社 どんと焼き</li>
+                    <li>02/01：物部港・冬の花火大会</li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p class="copyright">Copyright (C) 2025 WAKASA Prefecture Portal. All Rights Reserved.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // 物部市ページ専用のニュースフィルタリング
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('city-news-list');
+            if (container && typeof newsData !== 'undefined') {
+                const allNews = [...newsData.main, ...newsData.local, ...newsData.economy];
+                const mononobeNews = allNews.filter(item => 
+                    item.title.includes("物部") || 
+                    item.title.includes("市電") || 
+                    item.title.includes("路面電車") || 
+                    item.title.includes("漁港") || 
+                    item.title.includes("海水浴")
+                );
+
+                if (mononobeNews.length === 0) {
+                    container.innerHTML = "<li>現在、物部市のトピックスはありません。</li>";
+                } else {
+                    mononobeNews.forEach(item => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<a href="${item.url}"><span style="color:#666;">[${item.date}]</span> ${item.title}</a>`;
+                        container.appendChild(li);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
