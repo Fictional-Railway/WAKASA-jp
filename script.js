@@ -15,42 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateClock, 1000);
     updateClock();
 
-    // --- 天気API ---
-    const API_KEY = 'c1621a45a216a7d680a5d8ab3a1920b1'; 
-    const CITIES = [
-        { name: "沿岸部(敦賀)", id: "1850551" },
-        { name: "中央部(小浜)", id: "1853610" },
-        { name: "南部(舞鶴)", id: "1858094" }
-    ];
-
-    async function fetchLiveWeather() {
-        const display = document.getElementById('weather-display');
-        if (!display) return;
-
-        try {
-            let weatherStrings = [];
-            for (const city of CITIES) {
-                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${city.id}&appid=${API_KEY}&units=metric&lang=ja`);
-                const data = await response.json();
-                const temp = Math.round(data.main.temp);
-                const desc = data.weather[0].description;
-                
-                let icon = '☁️';
-                const i = data.weather[0].icon;
-                if(i.includes('01')) icon='☀️';
-                else if(i.includes('02')) icon='⛅';
-                else if(i.includes('09') || i.includes('10')) icon='☔️';
-                else if(i.includes('13')) icon='⛄️';
-
-                weatherStrings.push(`【${city.name}】 ${icon} ${temp}℃ / ${desc}`);
-            }
-            display.textContent = "　　" + weatherStrings.join("　　|　　") + "　　";
-        } catch (error) {
-            display.textContent = "天気情報の取得に失敗しました。";
-        }
-    }
-    fetchLiveWeather();
-    setInterval(fetchLiveWeather, 15 * 60 * 1000);
 
     // --- ユーザー認証システム ---
     const loggedOutView = document.getElementById('logged-out-view');
