@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             local: [
                 { title: "折鷲市で迷子のヤギが警察官と散歩", url: "#", isNew: true, hasCam: false },
                 { title: "汐崖町の展望台、リニューアルオープン", url: "#", isNew: false, hasCam: true },
-                { title: "香津村の「メロン祭り」予約開始", url: "#", isNew: false, hasCam: false },
+                { title: "香津村名産「黄金メロン」の初競り、一玉5万円の最高値", url: "#", isNew: false, hasCam: false },
                 { title: "深山町で「移動式スーパー」試験運行開始", url: "./news501.html", isNew: false, hasCam: true },
                 { title: "（もっと見る...）", url: "news.html", isNew: false, hasCam: false }
             ],
@@ -253,13 +253,20 @@ const newsData = {
         { date: "12/27", title: "国道563号高生交差点付近で乗用車4台が絡む事故、7人が負傷", url: "news005.html", isNew: false },
         { date: "12/25", title: "三都高速道路のスマートIC設置工事が完了、来月から運用", url: "news006.html", isNew: false },
         { date: "12/24", title: "若狭医科大学、難病治療の新たな臨床試験に成功", url: "news007.html", isNew: false },
-        { date: "12/23", title: "葉が山駅前の雑貨店「風天楼」が閉店　56年の歴史に幕", url: "news008.html", isNew: false }
+        { date: "12/23", title: "葉が山駅前の雑貨店「風天楼」が閉店　56年の歴史に幕", url: "news008.html", isNew: false },
+        { date: "12/22", title: "兵府市内で特殊詐欺を防いだ「中学生3人」に署長感謝状", url: "news009.html", isNew: false },
+        { date: "12/21", title: "県営馬土川線「自動運転」の公開走行試験に成功、2027年導入目指す", url: "news010.html", isNew: false },
+        { date: "12/20", title: "国鉄三都線「立幹駅」で人身事故　上下線で1時間半運転見合わせ　延べ3万人に影響", url: "news011.html", isNew: false },
+        { date: "12/19", title: "「煙が出ている」中甲日駅前の2階建てアパートで火事　男女3人を搬送", url: "news012.html", isNew: false },
+        { date: "12/18", title: "入塚市で地域活性化イベント「入塚フェスティバル」開催、過去最高の来場者数に", url: "news013.html", isNew: false },
+        { date: "12/18", title: "不正に病気休暇を取得、46歳の白央市職員を懲戒免職", url: "news014.html", isNew: false },
+        { date: "12/17", title: "プロサッカー「若狭オーシャンズ」、J1昇格へ向け新スタジアム建設へ", url: "news015.html", isNew: false }
     ],
     local: [
-        { date: "12/31", title: "香津村名産「黄金メロン」の初競り、一玉5万円の最高値", url: "#", isNew: false },
-        { date: "12/30", title: "汐崖町「絶景スカイテラス」がオープン、予約殺到", url: "#", isNew: false },
-        { date: "12/29", title: "折鷲市で警察官と「迷子のヤギ」が仲良く散歩？癒やされると話題", url: "#", isNew: false },
-        { date: "12/28", title: "千鳴村で「1,000個の竹灯籠」ライトアップ、2日まで開催", url: "#", isNew: false },
+        { date: "12/31", title: "折鷺市で迷子のヤギが警察官と散歩", url: "#", isNew: false },
+        { date: "12/30", title: "汐崖町の展望台、リニューアルオープン", url: "#", isNew: false },
+        { date: "12/29", title: "香津村名産「黄金メロン」の初競り、一玉5万円の最高値", url: "#", isNew: false },
+        { date: "12/28", title: "深山町で「移動式スーパー」試験運行開始", url: "news501.html", isNew: false },
         { date: "12/27", title: "早手川町の渓谷で「氷のカーテン」が出現、冬の風物詩に", url: "#", isNew: false },
         { date: "12/26", title: "矢坂町の商店街で「昭和レトロ市」が開催、若者にも人気", url: "#", isNew: false },
         { date: "12/25", title: "白央市、独自の「出産お祝い給付金」を大幅増額へ", url: "#", isNew: false },
