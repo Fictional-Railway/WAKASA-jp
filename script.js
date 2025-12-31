@@ -15,11 +15,41 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateClock, 1000);
     updateClock();
 
+    // --- 天気予報API連携 ---
+    async function updateWeather() {
+        const locations = [
+            { label: "沿岸", lat: 35.64, lon: 136.06 },
+            { label: "中央", lat: 35.49, lon: 135.74 },
+            { label: "南部", lat: 35.47, lon: 135.33 }
+        ];
+
+        const weatherCodes = {
+            0: "晴れ", 1: "概ね晴れ", 2: "時々曇り", 3: "曇り",
+            45: "霧", 48: "霧", 51: "小雨", 53: "雨", 55: "雨",
+            61: "雨", 63: "雨", 65: "強い雨", 71: "雪", 73: "雪", 75: "大雪",
+            80: "にわか雨", 81: "強いにわか雨", 82: "激しい雨", 95: "雷雨"
+        };
+
+        try {
+            const results = await Promise.all(locations.map(async (loc) => {
+                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current_weather=true&timezone=Asia%2FTokyo`);
+                const data = await response.json();
+                const temp = Math.round(data.current_weather.temperature);
+                const condition = weatherCodes[data.current_weather.weathercode] || "不明";
+                return `[${loc.label}]${condition} ${temp}℃`;
+            }));
+            const weatherDisp = document.getElementById('weather-display');
+            if (weatherDisp) weatherDisp.innerText = results.join(' / ');
+        } catch (error) {
+            console.error("Weather API Error:", error);
+        }
+    }
+    updateWeather();
+    setInterval(updateWeather, 1800000);
 
     // --- ユーザー認証システム ---
     const loggedOutView = document.getElementById('logged-out-view');
     const loggedInView = document.getElementById('logged-in-view');
-    const missionArea = document.getElementById('mission-area');
     const nameDisplay = document.getElementById('user-display-name');
     const pointDisplay = document.getElementById('user-points');
 
@@ -31,13 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (savedName) {
             loggedOutView.style.display = 'none';
             loggedInView.style.display = 'block';
-            if (missionArea) missionArea.style.display = 'block';
             if (nameDisplay) nameDisplay.textContent = savedName;
             if (pointDisplay) pointDisplay.textContent = savedPoints || 0;
         } else {
             loggedOutView.style.display = 'block';
             loggedInView.style.display = 'none';
-            if (missionArea) missionArea.style.display = 'none';
         }
     }
 
@@ -49,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('wakasa_user_name', userName);
                 if (!localStorage.getItem('wakasa_points')) localStorage.setItem('wakasa_points', 0);
                 loadUserData();
-                window.location.reload(); 
             }
         });
     }
@@ -60,63 +87,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (confirm("ログアウトしますか？")) {
                 localStorage.removeItem('wakasa_user_name');
                 loadUserData();
-                window.location.reload(); 
             }
         });
     }
-
-    const getPointBtn = document.getElementById('get-point-btn');
-    if (getPointBtn) {
-        getPointBtn.addEventListener('click', () => {
-            let currentPoints = parseInt(localStorage.getItem('wakasa_points') || 0);
-            currentPoints += 10;
-            localStorage.setItem('wakasa_points', currentPoints);
-            loadUserData();
-            alert("10ポイント獲得しました！");
-        });
-    }
-
     loadUserData();
 
-    // --- ニュースタブ機能（ここを修正） ---
+    // --- ニュース表示機能（index.html用） ---
     const newsContainer = document.getElementById('news-container');
     if (newsContainer) {
-        const newsData = {
-            main: [
-                { title: "若狭市と兵府市、「双子都市構想」で合意", url: "news001.html", isNew: true, hasCam: false },
-                { title: "【速報】入塚市で国内最古級の土器片発見", url: "news002.html", isNew: false, hasCam: true },
-                { title: "江崎市名産「若狭サバ」過去最高値", url: "news004.html", isNew: false, hasCam: false },
-                { title: "北陵〜白央の新トンネル、開通式典", url: "news003.html", isNew: false, hasCam: false },
-                { title: "（もっと見る...）", url: "news.html", isNew: false, hasCam: false }
-            ],
-            local: [
-                { title: "折鷲市で迷子のヤギが警察官と散歩", url: "#", isNew: true, hasCam: false },
-                { title: "汐崖町の展望台、リニューアルオープン", url: "#", isNew: false, hasCam: true },
-                { title: "香津村名産「黄金メロン」の初競り、一玉5万円の最高値", url: "#", isNew: false, hasCam: false },
-                { title: "深山町で「移動式スーパー」試験運行開始", url: "./news501.html", isNew: false, hasCam: true },
-                { title: "（もっと見る...）", url: "news.html", isNew: false, hasCam: false }
-            ],
-            economy: [
-                { title: "交通局物部トラム、黒字転換「AI導入が寄与」", url: "#", isNew: false, hasCam: false },
-                { title: "甲日市の高原リゾート、宿泊客数V字回復", url: "#", isNew: true, hasCam: false },
-                { title: "物部市の精密機械工場、世界シェア1位に", url: "#", isNew: false, hasCam: true },
-                { title: "若狭牛の海外輸出、過去最大を記録", url: "#", isNew: false, hasCam: false },
-                { title: "（もっと見る...）", url: "news.html", isNew: false, hasCam: false }
-            ]
-        };
-
         function displayNews(category) {
             newsContainer.innerHTML = '';
             const list = newsData[category] || newsData['main'];
             list.forEach(item => {
                 const li = document.createElement('li');
-                
-                // アイコン文字列作成
-                let icons = '';
-                if (item.isNew) icons += '<span class="new-icon">NEW</span>';
-                if (item.hasCam) icons += '<span class="camera-icon">📷</span>';
-                
-                // リンクの中にタイトルとアイコンを同居させ、左寄せを維持
+                let icons = item.isNew ? '<span class="new-icon">NEW</span>' : '';
                 li.innerHTML = `<a href="${item.url}" class="news-link">
                                     <span class="news-text">${item.title}</span>
                                     ${icons}
@@ -135,82 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         displayNews('main');
     }
-
-    // --- ゴミ出しカレンダー自動生成 ---
-    const calendarRoot = document.getElementById('calendar-12months-container');
-    if (calendarRoot) {
-        function generateCalendar(year, month) {
-            const firstDate = new Date(year, month - 1, 1);
-            const lastDate = new Date(year, month, 0);
-            const startDay = firstDate.getDay();
-            const endDay = lastDate.getDate();
-
-            let html = `
-            <div class="calendar-month-wrapper">
-                <h4 class="month-title">${year}年 ${month}月</h4>
-                <table class="garbage-table">
-                    <thead>
-                        <tr><th class="sun">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th class="sat">土</th></tr>
-                    </thead>
-                    <tbody><tr>`;
-
-            let dayCount = 0;
-            for (let i = 0; i < startDay; i++) {
-                html += `<td></td>`;
-                dayCount++;
-            }
-
-            for (let d = 1; d <= endDay; d++) {
-                const currentDayOfWeek = (dayCount % 7);
-                if (dayCount > 0 && currentDayOfWeek === 0) html += `</tr><tr>`;
-
-                let garbageType = "";
-                let garbageClass = "";
-
-                if (month === 1 && d <= 3) {
-                    garbageType = "年始休";
-                    garbageClass = "g-holiday";
-                } else {
-                    switch(currentDayOfWeek) {
-                        case 1: case 4: garbageType = "可燃"; garbageClass = "g-burn"; break;
-                        case 2: garbageType = "資源"; garbageClass = "g-res"; break;
-                        case 3: if (Math.floor(d / 7) % 2 === 0) { garbageType = "不燃"; garbageClass = "g-non"; } break;
-                        case 5: garbageType = "プラ"; garbageClass = "g-pla"; break;
-                    }
-                    if (d >= 20 && currentDayOfWeek === 1 && !garbageType.includes("有害")) {
-                        garbageType = "有害"; garbageClass = "g-bin";
-                    }
-                }
-
-                let cellContent = `<span class="day">${d}</span>`;
-                if (garbageType) cellContent += `<br><span class="label-g ${garbageClass}">${garbageType}</span>`;
-
-                let tdClass = "";
-                if (currentDayOfWeek === 0) tdClass = "sun";
-                if (currentDayOfWeek === 6) tdClass = "sat";
-
-                html += `<td class="${tdClass}">${cellContent}</td>`;
-                dayCount++;
-            }
-
-            while (dayCount % 7 !== 0) {
-                html += `<td></td>`;
-                dayCount++;
-            }
-
-            html += `</tr></tbody></table></div>`;
-            return html;
-        }
-
-        let fullCalendarHTML = "";
-        for (let m = 1; m <= 12; m++) fullCalendarHTML += generateCalendar(2026, m);
-        calendarRoot.innerHTML = fullCalendarHTML;
-    }
 });
 
+// --- ニュースデータ定義 ---
 const newsData = {
     main: [
-                { date: "12/30", title: "【速報】入塚市で国内最古級の土器片発見", url: "news002.html", isNew: false },
+        { date: "12/30", title: "【速報】入塚市で国内最古級の土器片発見", url: "news002.html", isNew: false },
         { date: "12/29", title: "若狭市と兵府市、「双子都市構想」で合意", url: "news001.html", isNew: false },
         { date: "12/29", title: "江崎市名産「若狭サバ」過去最高値", url: "news004.html", isNew: false },
         { date: "12/28", title: "北陵～白央の新トンネル、開通式典", url: "news003.html", isNew: false },
@@ -221,7 +135,7 @@ const newsData = {
         { date: "12/22", title: "兵府市内で特殊詐欺を防いだ「中学生3人」に署長感謝状", url: "news009.html", isNew: false },
         { date: "12/21", title: "県営馬土川線「自動運転」の公開走行試験に成功、2027年導入目指す", url: "news010.html", isNew: false },
         { date: "12/20", title: "国鉄三都線「立幹駅」で人身事故　上下線で1時間半運転見合わせ　延べ3万人に影響", url: "news011.html", isNew: false },
-        { date: "12/19", title: "「煙が出ている」中甲日駅前の2階建てアパートで火事　男女3人を搬送", url: "news012.html", isNew: false },
+        { date: "12/19", title: "「煙が出ている」香津村の2階建てアパートで火事　男女3人を搬送", url: "news012.html", isNew: false },
         { date: "12/18", title: "入塚市で地域活性化イベント「入塚フェスティバル」開催、過去最高の来場者数に", url: "news013.html", isNew: false },
         { date: "12/18", title: "不正に病気休暇を取得、46歳の白央市職員を懲戒免職", url: "news014.html", isNew: false },
         { date: "12/17", title: "プロサッカー「若狭オーシャンズ」、J1昇格へ向け新スタジアム建設へ", url: "news015.html", isNew: false }

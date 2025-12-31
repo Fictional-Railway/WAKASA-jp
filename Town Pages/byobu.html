@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兵府市 - WAKASA! 若狭県総合ポータル</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-area">
+            <h1><a href="../index.html" style="text-decoration: none;"><span class="red">WAKASA</span><span class="blue">!</span></a></h1>
+            <p class="subtitle">若狭県最大級の地域ポータル</p>
+        </div>
+        <div class="header-info">
+            <div id="clock-display" class="clock">0000年0月0日(月) 00:00:00</div>
+        </div>
+    </header>
+
+    <div class="status-bar2">
+        <span class="label2">ライブ天気予報</span>
+        <marquee scrollamount="3" class="weather-ticker" id="weather-display">
+            データを取得中...
+        </marquee>
+    </div>
+
+    <div class="status-bar">
+        <span class="label">インフラ情報</span>
+        <marquee scrollamount="5" class="ticker">
+            【鉄道】三都線：兵府駅ホーム混雑のため入場規制中　【道路】兵府環状線：中兵府付近で電子部品運搬車両の故障による渋滞　【行政】慶堂区役所：マイナンバー窓口は本日20時まで延長開設
+        </marquee>
+    </div>
+
+    <div class="main-container">
+        
+        <nav class="sidebar-left">
+            <div class="box-header">主要エリア（三都）</div>
+            <ul class="link-list">
+                <li><a href="wakasa.html">若狭市</a></li>
+                <li><a href="byobu.html">兵府市</a></li>
+                <li><a href="#">物部市</a></li>
+            </ul>
+
+            <div class="box-header">沿岸エリア</div>
+            <ul class="link-list">
+                <li><a href="#">香津村</a></li>
+                <li><a href="#">渡町</a></li>
+                <li><a href="#">汐崖町</a></li>
+                <li><a href="#">伊舟市</a></li>
+                <li><a href="#">早手川町</a></li>
+            </ul>
+
+            <div class="box-header">中部・南部エリア</div>
+            <ul class="link-list">
+                <li><a href="#">甲日市</a></li>
+                <li><a href="#">氏川町</a></li>
+                <li><a href="#">入塚市</a></li>
+                <li><a href="#">深山町</a></li>
+                <li><a href="#">折鷲市</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-center">
+            
+            <section class="city-intro-section" style="border: 1px solid #ccc; padding: 15px; background: #f0faff; margin-bottom: 20px; border-left: 10px solid #ff00ff;">
+                <h2 style="margin-top: 0; color: #333; border-bottom: 2px solid #ff00ff;">兵府市 <span style="font-size: 0.6em; color: #666;">Byobu City</span></h2>
+                <p>内陸に位置する若狭県第2の都市。古くからの電子部品問屋街「慶堂」と、超高層ビルが立ち並ぶ「中兵府」が隣接し、独自の熱気を持つ電脳都市として発展を続けています。</p>
+                
+                <table style="width: 100%; font-size: 12px; border-collapse: collapse; margin-top: 10px;">
+                    <tr>
+                        <th style="background: #eee; border: 1px solid #ccc; padding: 5px; width: 20%;">人口</th>
+                        <td style="border: 1px solid #ccc; padding: 5px;">約95万人</td>
+                        <th style="background: #eee; border: 1px solid #ccc; padding: 5px; width: 20%;">市の花</th>
+                        <td style="border: 1px solid #ccc; padding: 5px;">サルビア</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="district-section" style="margin-bottom: 20px;">
+                <div class="box-header">兵府市内 8区ガイド</div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px; padding: 10px; background: #eee; border: 1px solid #ccc;">
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>中兵府区</b><br><small>超高層ビルが並ぶビジネスと行政の中心</small></div>
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>慶堂区</b><br><small>世界屈指の電脳街。ジャンク品からAIまで揃う　慶堂湖も有名</small></div>
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>西平区</b><br><small>新興住宅街と巨大ショッピングモールが広がる</small></div>
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>大川区</b><br><small>運河沿いに倉庫街を改装したカフェ並ぶお洒落エリア</small></div>
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>柳平区</b><br><small>古くからの商店街が残る、落ち着いた下町</small></div>
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>柳賀川区</b><br><small>工業地帯と最新のロボット研究所が同居</small></div>
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>舞田区</b><br><small>兵府スタジアムを擁するスポーツとエンタメの街</small></div>
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>南兵府区</b><br><small>山の手の高級住宅街。若狭医科大学兵府分院も</small></div>
+                </div>
+            </section>
+
+            <section class="news-section">
+                <div class="news-header" style="border-bottom: 2px solid #ff00ff;">
+                    <h2>兵府市トピックス</h2>
+                </div>
+                <ul class="news-list" id="city-news-list">
+                    </ul>
+            </section>
+
+            <section class="local-links">
+                <div class="box-header">兵府市 関連サービス</div>
+                <ul class="link-grid">
+                    <li><a href="#">兵府電脳街・在庫一括検索</a></li>
+                    <li><a href="#">市営地下鉄リアルタイム運行状況</a></li>
+                    <li><a href="#">慶堂ジャンク市・開催情報</a></li>
+                    <li><a href="#">兵府市立図書館・電子書籍予約</a></li>
+                </ul>
+            </section>
+
+        </main>
+
+        <aside class="sidebar-right">
+            <div class="ad-area">
+                <p class="ad-label">広告</p>
+                <div class="ad-banner" style="background: #000; color: #0f0; padding: 10px; font-family: monospace; border: 2px solid #0f0;">
+                    <p style="margin:5px 0; font-size: 11px;">兵府<span style="color: #ff57ff;">電脳</span>パーツ<br>最新CPUから真空管まで<br>慶堂駅徒歩3分</p>
+                    <strong style="text-decoration: underline;"><a href="https://fictional-railway.github.io/Byobu-geek">byobu-geek.com</a></strong>
+                </div>
+                <div class="ad-banner2">
+                    <p>兵府市で暮らすなら</p>
+                    <p>柳平不動産にお任せ！</p>
+                    <strong style="color: rgb(255, 31, 31);">柳平不動産</strong>
+                </div>
+            </div>
+
+            <div class="event-box">
+                <div class="box-header2">兵府のイベント</div>
+                <ul class="small-list">
+                    <li>12/31：中兵府カウントダウン</li>
+                    <li>01/05：慶堂・初売りセール</li>
+                    <li>01/10：舞田スタジアム駅伝</li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p class="copyright">Copyright (C) 2025 WAKASA Prefecture Portal. All Rights Reserved.</p>
+        <p class="disclaimer">※このサイトは架空のものです。</p>
+        <a style="color: rgb(87, 182, 255);" href="https://fictional-railway.github.io/myrailways/">架空鉄道一覧はこちらから</a><br><br>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // 兵府市ページ専用のニュースフィルタリング
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('city-news-list');
+            if (container && typeof newsData !== 'undefined') {
+                const byobuNews = newsData.main.filter(item => 
+                    item.title.includes("兵府") || 
+                    item.title.includes("西平") || 
+                    item.title.includes("大川") || 
+                    item.title.includes("柳平") || 
+                    item.title.includes("柳賀川") || 
+                    item.title.includes("慶堂") || 
+                    item.title.includes("舞田") || 
+                    item.title.includes("電脳")
+                );
+
+                if (byobuNews.length === 0) {
+                    container.innerHTML = "<li>現在、兵府市のトピックスはありません。</li>";
+                } else {
+                    byobuNews.forEach(item => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<a href="${item.url}"><span class="date">[${item.date}]</span> ${item.title}</a>`;
+                        container.appendChild(li);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

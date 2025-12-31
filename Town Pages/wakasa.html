@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>若狭市 - WAKASA! 若狭県総合ポータル</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-area">
+            <h1><a href="../index.html" style="text-decoration: none;"><span class="red">WAKASA</span><span class="blue">!</span></a></h1>
+            <p class="subtitle">若狭県最大級の地域ポータル</p>
+        </div>
+        <div class="header-info">
+            <div id="clock-display" class="clock">0000年0月0日(月) 00:00:00</div>
+        </div>
+    </header>
+
+    <div class="status-bar2">
+        <span class="label2">ライブ天気予報</span>
+        <marquee scrollamount="3" class="weather-ticker" id="weather-display">
+            データを取得中...
+        </marquee>
+    </div>
+
+    <div class="status-bar">
+        <span class="label">インフラ情報</span>
+        <marquee scrollamount="5" class="ticker">
+            【鉄道】県内路線：通常運転　【道路】大きな渋滞等はなし【電力】県内全域：安定供給中　【行政】お知らせなし
+        </marquee>
+    </div>
+
+    <div class="main-container">
+        
+        <nav class="sidebar-left">
+            <div class="box-header">主要エリア（三都）</div>
+            <ul class="link-list">
+                <li><a href="wakasa.html">若狭市</a></li>
+                <li><a href="#">兵府市</a></li>
+                <li><a href="#">物部市</a></li>
+            </ul>
+
+            <div class="box-header">沿岸エリア</div>
+            <ul class="link-list">
+                <li><a href="#">香津村</a></li>
+                <li><a href="#">渡町</a></li>
+                <li><a href="#">汐崖町</a></li>
+                <li><a href="#">伊舟市</a></li>
+                <li><a href="#">早手川町</a></li>
+                <li><a href="#">矢坂町</a></li>
+                <li><a href="#">江崎市</a></li>
+                <li><a href="#">葉が山町</a></li>
+            </ul>
+
+            <div class="box-header">中部・南部エリア</div>
+            <ul class="link-list">
+                <li><a href="#">甲日市</a></li>
+                <li><a href="#">氏川町</a></li>
+                <li><a href="#">徳峰町</a></li>
+                <li><a href="#">入塚市</a></li>
+                <li><a href="#">深山町</a></li>
+                <li><a href="#">折鷲市</a></li>
+                <li><a href="#">北陵市</a></li>
+                <li><a href="#">白央市</a></li>
+                <li><a href="#">千鳴村</a></li>
+                <li><a href="#">朝渕村</a></li>
+                <li><a href="#">丹谷町</a></li>
+                <li><a href="#">小桟田町</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-center">
+            
+            <section class="city-intro-section" style="border: 1px solid #ccc; padding: 15px; background: #fdfdfd; margin-bottom: 20px;">
+                <h2 style="margin-top: 0; color: #0033cc; border-bottom: 2px solid #0033cc;">若狭市へようこそ</h2>
+                <p>若狭市の中心に位置する県庁所在地であり、人口100万人を超える政令指定都市です。9の行政区を持ち、経済・文化の中枢として発展し続けています。</p>
+                
+                <table style="width: 100%; font-size: 12px; border-collapse: collapse; margin-top: 10px;">
+                    <tr>
+                        <th style="background: #eee; border: 1px solid #ccc; padding: 5px; width: 20%;">人口</th>
+                        <td style="border: 1px solid #ccc; padding: 5px;">1,050,321人（2025年12月現在）</td>
+                        <th style="background: #eee; border: 1px solid #ccc; padding: 5px; width: 20%;">世帯数</th>
+                        <td style="border: 1px solid #ccc; padding: 5px;">482,100世帯</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="district-section" style="margin-bottom: 20px;">
+                <div class="box-header">若狭市の9行政区</div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px; padding: 10px; background: #f0f0f0;">
+                    <div style="background: #fff; padding: 5px; border: 1px solid #ddd;">■ <b>七宮区</b>（自然・山間部）</div>
+                    <div style="background: #fff; padding: 5px; border: 1px solid #ddd;">■ <b>日澤区</b>（歴史・旧市街）</div>
+                    <div style="background: #fff; padding: 5px; border: 1px solid #ddd;">■ <b>明区</b>（交通・ビジネス）</div>
+                    <div style="background: #fff; padding: 5px; border: 1px solid #ddd;">■ <b>滝ヶ谷区</b>（官庁街・県庁）</div>
+                    <div style="background: #fff; padding: 5px; border: 1px solid #ddd;">■ <b>銀樂区</b>（新興住宅地）</div>
+                    <div style="background: #fff; padding: 5px; border: 1px solid #ddd;">■ <b>馬土川区</b>（工業・流通）</div>
+                    <div style="background: #fff; padding: 5px; border: 1px solid #ddd;">■ <b>若狭区</b>（商業・都心）</div>
+                    <div style="background: #fff; padding: 5px; border: 1px solid #ddd;">■ <b>峰廊区</b>（文教・住宅）</div>
+                    <div style="background: #fff; padding: 5px; border: 1px solid #ddd;">■ <b>鐘山区</b>（公園・レジャー）</div>
+                </div>
+            </section>
+
+            <section class="news-section">
+                <div class="news-header">
+                    <h2>若狭市内のニュース</h2>
+                </div>
+                <ul class="news-list" id="city-news-list">
+                    </ul>
+            </section>
+
+            <section class="tools-section">
+                <h3>▼ 市民便利ツール</h3>
+                <div class="tool-grid">
+                    <div class="tool-item">
+                        <a style="text-decoration: none;" href="../gomidashi.html">
+                            <div class="icon">📅</div>
+                            <div class="label">収集カレンダー</div>
+                        </a>
+                    </div>
+                    <div class="tool-item">
+                        <div class="icon">🚑</div>
+                        <div class="label">救急当番医</div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="icon">🚇</div>
+                        <div class="label">地下鉄運行</div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="icon">📄</div>
+                        <div class="label">申請書DL</div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <aside class="sidebar-right">
+            <div class="login-box" id="auth-box">
+                <div id="logged-out-view">
+                    <p>こんにちは、<b>ゲスト</b>さん</p>
+                    <button class="btn-primary" id="login-btn">若狭IDでログイン</button>
+                    <p class="small-text"><a href="#" id="signup-link">新規会員登録はこちら</a></p>
+                </div>
+                <div id="logged-in-view" style="display: none;">
+                    <p>こんにちは、<b id="user-display-name">---</b>さん</p>
+                    <p class="point-display">現在のポイント: <span id="user-points">0</span> pt</p>
+                    <button class="btn-secondary" id="logout-btn">ログアウト</button>
+                </div>
+            </div>
+
+            <div class="ad-area">
+                <div class="box-header2">若狭市のおすすめ</div>
+                <div class="ad-banner">
+                    <p>【不動産】立幹タワーレジデンス</p>
+                    <p>駅直結・最終分譲中</p>
+                    <strong>若狭県都市事業</strong>
+                </div>
+                <div class="ad-banner2">
+                    <p>若狭名物「若狭おやき」</p>
+                    <p>中央区・本多本店にて販売中</p>
+                    <strong>本多屋菓子舗</strong>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p class="copyright">Copyright (C) 2025 WAKASA Prefecture Portal. All Rights Reserved.</p>
+        <p class="disclaimer">※このサイトは架空のものです。</p>
+        <a style="color: rgb(87, 182, 255);" href="https://fictional-railway.github.io/myrailways/">架空鉄道一覧はこちらから</a><br><br>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // 若狭市ページ専用のニュース表示処理
+        document.addEventListener('DOMContentLoaded', () => {
+            const cityNewsContainer = document.getElementById('city-news-list');
+            if (cityNewsContainer && typeof newsData !== 'undefined') {
+                // newsDataから「若狭市」または「立幹区」などのキーワードを含むニュースを抽出
+                const cityNews = newsData.main.filter(item => 
+                    item.title.includes("若狭市") || 
+                    item.title.includes("若狭市営") || 
+                    item.title.includes("若狭駅") ||
+                    item.title.includes("七宮区") ||
+                    item.title.includes("日澤区") || 
+                    item.title.includes("明区") ||
+                    item.title.includes("滝ヶ谷区") ||
+                    item.title.includes("銀樂区") ||
+                    item.title.includes("馬土川区") ||
+                    item.title.includes("若狭区") ||
+                    item.title.includes("峰廊区") ||
+                    item.title.includes("鐘山区") ||
+                    item.title.includes("赤蔦") ||
+                    item.title.includes("医科大学")
+
+                );
+
+                cityNews.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${item.url}" class="news-link">
+                                        <span style="font-size:11px; color:#666; margin-right:5px;">[${item.date}]</span>
+                                        <span class="news-text">${item.title}</span>
+                                    </a>`;
+                    cityNewsContainer.appendChild(li);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

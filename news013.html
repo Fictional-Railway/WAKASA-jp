@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入塚市で「入塚フェスティバル」開催　過去最高の3万人来場で賑わう - WAKASA!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-area">
+            <h1><a href="index.html" style="text-decoration:none; color:inherit;"><span class="red">WAKASA</span><span class="blue">!</span></a></h1>
+            <p class="subtitle">若狭県最大級の地域ポータル</p>
+        </div>
+        <div class="header-info">
+            <div id="clock-display" class="clock">0000年0月0日(月) 00:00:00</div>
+        </div>
+    </header>
+
+    <div class="status-bar2">
+    <span class="label2">ライブ天気予報</span>
+    <marquee scrollamount="3" class="weather-ticker" id="weather-display">
+        データを取得中...
+    </marquee>
+</div>
+
+<script>
+async function updateWeather() {
+    // 緯度・経度の設定（沿岸=敦賀付近, 中央=小浜付近, 南部=舞鶴付近）
+    const locations = [
+        { label: "沿岸", lat: 35.64, lon: 136.06 },
+        { label: "中央", lat: 35.49, lon: 135.74 },
+        { label: "南部", lat: 35.47, lon: 135.33 }
+    ];
+
+    // 天気コードを日本語に変換するマップ
+    const weatherCodes = {
+        0: "晴れ", 1: "概ね晴れ", 2: "時々曇り", 3: "曇り",
+        45: "霧", 48: "霧", 51: "小雨", 53: "雨", 55: "雨",
+        61: "雨", 63: "雨", 65: "強い雨", 71: "雪", 73: "雪", 75: "大雪",
+        80: "にわか雨", 81: "強いにわか雨", 82: "激しい雨", 95: "雷雨"
+    };
+
+    try {
+        const results = await Promise.all(locations.map(async (loc) => {
+            const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current_weather=true&timezone=Asia%2FTokyo`);
+            const data = await response.json();
+            const temp = Math.round(data.current_weather.temperature);
+            const condition = weatherCodes[data.current_weather.weathercode] || "不明";
+            return `[${loc.label}]${condition} ${temp}℃`;
+        }));
+
+        // 取得したデータを marquee に反映
+        document.getElementById('weather-display').innerText = results.join(' / ');
+    } catch (error) {
+        document.getElementById('weather-display').innerText = "データ取得に失敗しました";
+        console.error("Weather API Error:", error);
+    }
+}
+
+// ページ読み込み時に実行
+updateWeather();
+// 30分ごとに更新（1800000ミリ秒）
+setInterval(updateWeather, 1800000);
+</script>
+    <div class="status-bar">
+        <span class="label">インフラ情報</span>
+        <marquee scrollamount="5" class="ticker">
+            【鉄道】県内路線：通常運転　【道路】大きな渋滞等はなし【電力】県内全域：安定供給中　【行政】兵府市役所：本日は20時まで窓口延長
+        </marquee>
+    </div>
+
+    <div class="main-container">
+        
+        <nav class="sidebar-left">
+            <div class="box-header">主要エリア（三都）</div>
+            <ul class="link-list">
+                <li><a href="#">若狭市</a></li>
+                <li><a href="#">兵府市</a></li>
+                <li><a href="#">物部市</a></li>
+            </ul>
+
+            <div class="box-header">沿岸エリア</div>
+            <ul class="link-list">
+                <li><a href="#">香津村</a></li>
+                <li><a href="#">渡町</a></li>
+                <li><a href="#">汐崖町</a></li>
+                <li><a href="#">伊舟市</a></li>
+                <li><a href="#">早手川町</a></li>
+                <li><a href="#">矢坂町</a></li>
+                <li><a href="#">江崎市</a></li>
+                <li><a href="#">葉が山町</a></li>
+            </ul>
+
+            <div class="box-header">中部・南部エリア</div>
+            <ul class="link-list">
+                <li><a href="#">甲日市</a></li>
+                <li><a href="#">氏川町</a></li>
+                <li><a href="#">徳峰町</a></li>
+                <li><a href="#">入塚市</a></li>
+                <li><a href="#">深山町</a></li>
+                <li><a href="#">折鷲市</a></li>
+                <li><a href="#">北陵市</a></li>
+                <li><a href="#">白央市</a></li>
+                <li><a href="#">千鳴村</a></li>
+                <li><a href="#">朝渕村</a></li>
+                <li><a href="#">丹谷町</a></li>
+                <li><a href="#">小桟田町</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-center">
+            
+            <section class="news-section">
+                <nav class="breadcrumb">
+                    <a href="index.html">トップ</a> &gt; <a href="news.html">若狭トピックス</a> &gt; 地域・イベント
+                </nav>
+                <div class="news-header"><h2>入塚市で「入塚フェスティバル」開催　過去最高の3万人来場で賑わう</h2></div>
+                <div class="article-meta">
+                    <span class="date">2025年12月18日 17:00</span>
+                    <span class="category">地域</span>
+                    <span class="author">若狭新聞・中南部支局</span>
+                </div>
+
+                <p>若狭県中南部の中心都市・<strong>入塚市</strong>で18日、地域活性化を目的とした恒例の大型イベント<strong>「入塚フェスティバル」</strong>が開催された。天候にも恵まれ、会場には市内外から過去最高となる延べ<strong>約3万人</strong>が訪れ、冬のひとときを楽しんだ。</p>
+                
+                <p>メイン会場の市役所前広場には、地元の農家による直売所や、若狭牛を使ったご当地グルメの屋台など、計80以上のブースが並んだ。特に、入塚市の特産である粘土細工の体験コーナーは、子供連れの家族に大人気で、用意された整理券が午前中に配布終了となる盛況ぶりを見せた。</p>
+                    
+                <h3>「街に活気が戻ってきた」と喜びの声</h3>
+                <p>ステージでは地元の高校吹奏楽部による演奏や、若狭県公認キャラクター「わかまる」によるダンスショーも行われ、会場の熱気は最高潮に。来場した市内の主婦は「久しぶりにこんなに多くの人が集まるイベントに来て、街の元気を感じました。美味しいものもたくさん食べられて大満足です」と笑顔を見せた。</p>
+                
+                <h3>地域ブランドの確立へ</h3>
+                <p>入塚市の実行委員会代表は「SNSでの発信や、県営鉄道馬土川線との連携によるアクセスの改善が功を奏し、若い世代の来場が目に見えて増えた。今後も入塚の魅力を県内外に発信していきたい」と手応えを語った。</p>
+
+                <div class="notice-box" style="background-color: #fff9db; border-left: 5px solid #fab005; padding: 15px; margin: 20px 0;">
+                    <strong>【フォトコンテストのお知らせ】</strong><br>
+                    本日会場で撮影された写真を対象とした「入塚フェス・フォトコンテスト」を実施中です。ハッシュタグ「#入塚フェス2025」をつけてSNSに投稿してください。入賞者には市内の温泉ペア宿泊券を贈呈します！
+                </div>
+
+                <div class="related-news">
+                    <h4>【関連記事】</h4>
+                    <ul>
+                        <li><a href="#">入塚市の中学校で「巨大土器づくり」に挑戦　地域文化を次世代へ</a></li>
+                        <li><a href="#">県営鉄道・馬土川線、イベントに合わせ臨時列車を運行</a></li>
+                        <li><a href="#">【グルメ】入塚市発祥の新スイーツ「粘土クッキー」がSNSで話題に</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+
+        <aside class="sidebar-right">
+            <div class="login-box" id="auth-box">
+                <div id="logged-out-view">
+                    <p>こんにちは、<b>ゲスト</b>さん</p>
+                    <button class="btn-primary" id="login-btn">若狭IDでログイン</button>
+                    <p class="small-text">※登録済みの方はこちら</p>
+                </div>
+
+                <div id="logged-in-view" style="display: none;">
+                    <p>こんにちは、<b id="user-display-name">---</b>さん</p>
+                    <p class="point-display">現在のポイント: <span id="user-points">0</span> pt</p>
+                    <button class="btn-secondary" id="logout-btn">ログアウト</button>
+                </div>
+            </div>
+            
+            <div class="mission-box" id="mission-area" style="display: none;">
+                <button id="get-point-btn">🎁 今日の来県ポイントをもらう</button>
+            </div>
+            <span style="margin: 1px;"></span>
+            <div class="ad-area">
+                <div class="box-header2">広告エリア</div>
+                <div class="ad-banner">
+                    <p>【求人】海が見えるオフィス</p>
+                    <p>詳細はこちらから</p>
+                    <strong>江崎ITパーク</strong>
+                </div>
+                <div class="ad-banner2">
+                    <a style="text-decoration: none; text-align: center; display: block; color: #595959;" href="https://fictional-railway.github.io/Ifunesan-Bus/">
+                    <p>心にしまった夢、もう一度かなえてみませんか？</p>
+                    <p>伊舟山バスでは運転手を募集しております。</p>
+                    <strong>伊舟山交通</strong>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p class="copyright">Copyright (C) 2025 WAKASA Prefecture Portal. All Rights Reserved.</p>
+        <p class="disclaimer">※このサイトは架空のものです。</p>
+        <a style="color: rgb(87, 182, 255);" href="https://fictional-railway.github.io/myrailways/">架空鉄道一覧はこちらから</a><br><br>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
