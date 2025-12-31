@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 時計機能 ---
+    // --- 1. 時計機能（最終更新時刻の連動含む） ---
     function updateClock() {
         const now = new Date();
         const days = ['日', '月', '火', '水', '木', '金', '土'];
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateClock, 1000);
     updateClock();
 
-    // --- 天気予報API連携 ---
+    // --- 2. 天気予報API連携 ---
     async function updateWeather() {
         const locations = [
             { label: "沿岸", lat: 35.64, lon: 136.06 },
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateWeather();
     setInterval(updateWeather, 1800000);
 
-    // --- ユーザー認証システム ---
+    // --- 3. ユーザー認証システム ---
     const loggedOutView = document.getElementById('logged-out-view');
     const loggedInView = document.getElementById('logged-in-view');
     const nameDisplay = document.getElementById('user-display-name');
@@ -92,16 +92,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     loadUserData();
 
-    // --- ニュース表示機能（index.html用） ---
+    // --- 4. ニュース表示機能（index / wakasa / hyofu 共通） ---
+    
+    // index.html用のタブ表示ロジック（最新5件制限）
     const newsContainer = document.getElementById('news-container');
     if (newsContainer) {
         function displayNews(category) {
             newsContainer.innerHTML = '';
             const list = newsData[category] || newsData['main'];
-            list.forEach(item => {
+            
+            // 【修正点】トップページは最新5件のみ表示
+            const limitedList = list.slice(0, 5);
+            
+            limitedList.forEach(item => {
                 const li = document.createElement('li');
                 let icons = item.isNew ? '<span class="new-icon">NEW</span>' : '';
                 li.innerHTML = `<a href="${item.url}" class="news-link">
+                                    <span style="font-size:11px; color:#666; margin-right:5px;">[${item.date}]</span>
                                     <span class="news-text">${item.title}</span>
                                     ${icons}
                                 </a>`;
@@ -117,47 +124,97 @@ document.addEventListener('DOMContentLoaded', () => {
                 displayNews(tab.getAttribute('data-category'));
             });
         });
-        displayNews('main');
+        displayNews('main'); // 初期表示
+    }
+
+    // --- 5. 若狭市ページ用：全区キーワード検索ロジック ---
+    const wakasaNewsContainer = document.getElementById('wakasa-news-list');
+    if (wakasaNewsContainer) {
+        // 全カテゴリーのニュースを結合して検索対象にする
+        const allNews = [...newsData.main, ...newsData.local, ...newsData.economy];
+        
+        const filtered = allNews.filter(item => 
+            item.title.includes("若狭市") || 
+            item.title.includes("若狭市営") || 
+            item.title.includes("若狭駅") ||
+            item.title.includes("七宮区") ||
+            item.title.includes("日澤区") || 
+            item.title.includes("明区") ||
+            item.title.includes("滝ヶ谷区") ||
+            item.title.includes("銀樂区") ||
+            item.title.includes("馬土川区") ||
+            item.title.includes("若狭区") ||
+            item.title.includes("峰廊区") ||
+            item.title.includes("鐘山区") ||
+            item.title.includes("赤蔦") ||
+            item.title.includes("医科大学")
+        );
+
+        filtered.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="${item.url}"><span style="color:#666;">[${item.date}]</span> ${item.title}</a>`;
+            wakasaNewsContainer.appendChild(li);
+        });
+    }
+
+    // --- 6. 兵府市ページ用：全区キーワード検索ロジック ---
+    const hyofuNewsContainer = document.getElementById('city-news-list');
+    if (hyofuNewsContainer) {
+        const allNews = [...newsData.main, ...newsData.local, ...newsData.economy];
+        
+        const filtered = allNews.filter(item => 
+            item.title.includes("兵府市") || 
+            item.title.includes("西平区") || 
+            item.title.includes("大川区") || 
+            item.title.includes("柳平区") || 
+            item.title.includes("柳賀川区") || 
+            item.title.includes("中兵府区") || 
+            item.title.includes("慶堂区") || 
+            item.title.includes("舞田区") || 
+            item.title.includes("南兵府区") ||
+            item.title.includes("電脳") ||
+            item.title.includes("ハイフ")
+        );
+
+        if (filtered.length === 0) {
+            hyofuNewsContainer.innerHTML = "<li>該当するニュースはありません。</li>";
+        } else {
+            filtered.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<a href="${item.url}"><span style="color:#666;">[${item.date}]</span> ${item.title}</a>`;
+                hyofuNewsContainer.appendChild(li);
+            });
+        }
     }
 });
 
 // --- ニュースデータ定義 ---
 const newsData = {
     main: [
-        { date: "12/30", title: "【速報】入塚市で国内最古級の土器片発見", url: "news002.html", isNew: false },
-        { date: "12/29", title: "若狭市と兵府市、「双子都市構想」で合意", url: "news001.html", isNew: false },
-        { date: "12/29", title: "江崎市名産「若狭サバ」過去最高値", url: "news004.html", isNew: false },
-        { date: "12/28", title: "北陵～白央の新トンネル、開通式典", url: "news003.html", isNew: false },
-        { date: "12/27", title: "国道563号高生交差点付近で乗用車4台が絡む事故、7人が負傷", url: "news005.html", isNew: false },
-        { date: "12/25", title: "三都高速道路のスマートIC設置工事が完了、来月から運用", url: "news006.html", isNew: false },
-        { date: "12/24", title: "若狭医科大学、難病治療の新たな臨床試験に成功", url: "news007.html", isNew: false },
-        { date: "12/23", title: "葉が山駅前の雑貨店「風天楼」が閉店　56年の歴史に幕", url: "news008.html", isNew: false },
-        { date: "12/22", title: "兵府市内で特殊詐欺を防いだ「中学生3人」に署長感謝状", url: "news009.html", isNew: false },
-        { date: "12/21", title: "県営馬土川線「自動運転」の公開走行試験に成功、2027年導入目指す", url: "news010.html", isNew: false },
-        { date: "12/20", title: "国鉄三都線「立幹駅」で人身事故　上下線で1時間半運転見合わせ　延べ3万人に影響", url: "news011.html", isNew: false },
-        { date: "12/19", title: "「煙が出ている」香津村の2階建てアパートで火事　男女3人を搬送", url: "news012.html", isNew: false },
-        { date: "12/18", title: "入塚市で地域活性化イベント「入塚フェスティバル」開催、過去最高の来場者数に", url: "news013.html", isNew: false },
-        { date: "12/18", title: "不正に病気休暇を取得、46歳の白央市職員を懲戒免職", url: "news014.html", isNew: false },
-        { date: "12/17", title: "プロサッカー「若狭オーシャンズ」、J1昇格へ向け新スタジアム建設へ", url: "news015.html", isNew: false }
+        { date: "12/30", title: "【速報】入塚市で国内最古級の土器片発見", url: "#", isNew: false },
+        { date: "12/29", title: "若狭市と兵府市、「双子都市構想」で合意", url: "#", isNew: false },
+        { date: "12/29", title: "江崎市名産「若狭サバ」過去最高値", url: "#", isNew: false },
+        { date: "12/28", title: "北陵～白央の新トンネル、開通式典", url: "#", isNew: false },
+        { date: "12/27", title: "国道563号高生交差点付近で乗用車4台が絡む事故、7人が負傷", url: "#", isNew: false },
+        { date: "12/25", title: "三都高速道路のスマートIC設置工事が完了、来月から運用", url: "#", isNew: false },
+        { date: "12/24", title: "若狭医科大学、難病治療の新たな臨床試験に成功", url: "#", isNew: false },
+        { date: "12/23", title: "葉が山駅前の雑貨店「風天楼」が閉店　56年の歴史に幕", url: "#", isNew: false },
+        { date: "12/22", title: "兵府市内で特殊詐欺を防いだ「中学生3人」に署長感謝状", url: "#", isNew: false },
+        { date: "12/21", title: "県営馬土川線「自動運転」の公開走行試験に成功、2027年導入目指す", url: "#", isNew: false },
+        { date: "12/20", title: "国鉄三都線「立幹駅」で人身事故　上下線で1時間半運転見合わせ", url: "#", isNew: false }
     ],
     local: [
-        { date: "12/31", title: "折鷺市で迷子のヤギが警察官と散歩", url: "#", isNew: false },
-        { date: "12/30", title: "汐崖町の展望台、リニューアルオープン", url: "#", isNew: false },
-        { date: "12/29", title: "香津村名産「黄金メロン」の初競り、一玉5万円の最高値", url: "#", isNew: false },
-        { date: "12/28", title: "深山町で「移動式スーパー」試験運行開始", url: "news501.html", isNew: false },
-        { date: "12/27", title: "早手川町の渓谷で「氷のカーテン」が出現、冬の風物詩に", url: "#", isNew: false },
-        { date: "12/26", title: "矢坂町の商店街で「昭和レトロ市」が開催、若者にも人気", url: "#", isNew: false },
-        { date: "12/25", title: "白央市、独自の「出産お祝い給付金」を大幅増額へ", url: "#", isNew: false },
-        { date: "12/24", title: "小桟田町の廃校を利用した現代アート展が閉幕、来場者最多", url: "#", isNew: false }
+        { date: "12/31", title: "若狭市七宮区で大規模なカウントダウンイベント準備進む", url: "#", isNew: true },
+        { date: "12/30", title: "慶堂区の電脳街、年末恒例のジャンク市に過去最多の人出", url: "#", isNew: true },
+        { date: "12/29", title: "西平区のショッピングモールに「若狭市営出張窓口」が開設", url: "#", isNew: false },
+        { date: "12/28", title: "日澤区〜明区間でのWi-Fi提供エリアを拡大、若狭市営地下鉄が発表", url: "#", isNew: false },
+        { date: "12/27", title: "滝ヶ谷区の渓谷公園で冬のライトアップ。若狭駅から臨時バス運行", url: "#", isNew: false },
+        { date: "12/26", title: "折鷺市で迷子のヤギが警察官と散歩", url: "#", isNew: false }
     ],
     economy: [
-        { date: "12/30", title: "【鉄道】若狭電鉄、昭和レトロな「復刻版車両」の期間限定運行を開始", url: "#", isNew: false },
-        { date: "12/29", title: "【教育】入塚市の中学校で特産粘土を使った「巨大土器づくり」に挑戦", url: "#", isNew: false },
-        { date: "12/28", title: "【開発】兵府市中央再開発ビル、愛称が「ハイフ・スクエア」に決定", url: "#", isNew: false },
-        { date: "12/27", title: "【企業】若狭酒造の新ブランド「若狭の滴」が国際コンクールで金賞", url: "#", isNew: false },
-        { date: "12/26", title: "【雇用】渡町の漁業組合、若手漁師の育成プロジェクトを開始", url: "#", isNew: false },
-        { date: "12/25", title: "【小売】物部市に大型アウトレットモールが来春オープン予定", url: "#", isNew: false },
-        { date: "12/24", title: "【不動産】伊舟市のリゾートマンション建設ラッシュ、首都圏から注目", url: "#", isNew: false },
-        { date: "12/23", title: "【エネルギー】徳峰町で地熱発電所の建設が着工、脱炭素社会へ", url: "#", isNew: false }
+        { date: "12/30", title: "柳賀川区のロボット工場、完全自動化ラインを公開", url: "#", isNew: false },
+        { date: "12/29", title: "中兵府区の「ハイフ・スクエア」再開発、愛称が正式決定", url: "#", isNew: false },
+        { date: "12/28", title: "舞田区の兵府スタジアム、来季の命名権をIT大手と契約", url: "#", isNew: false },
+        { date: "12/27", title: "若狭酒造の新ブランド「若狭の滴」が国際コンクールで金賞", url: "#", isNew: false }
     ]
 };
