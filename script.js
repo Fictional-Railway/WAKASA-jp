@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. 時計機能（最終更新時刻の連動含む） ---
+    // --- 1. 時計機能 ---
     function updateClock() {
         const now = new Date();
         const days = ['日', '月', '火', '水', '木', '金', '土'];
@@ -92,16 +92,108 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     loadUserData();
 
-    // --- 4. ニュース表示機能（index / wakasa / hyofu 共通） ---
-    
-    // index.html用のタブ表示ロジック（最新5件制限）
+    // --- 4. 12ヶ月ゴミ出しカレンダー生成機能（gomidashi.html用） ---
+    const calendarContainer = document.getElementById('calendar-12months-container');
+    if (calendarContainer) {
+        const areaSelect = document.getElementById('area-select');
+        
+        // ゴミ収集スケジュール設定
+        const schedules = {
+            wakasa: { burn: [1, 4], nonBurn: [2], plastic: [3], bottles: [5] }, // 1=月, 4=木...
+            esaki:  { burn: [2, 5], nonBurn: [1], plastic: [4], bottles: [3] },
+            miyama: { burn: [3, 6], nonBurn: [4], plastic: [2], bottles: [1] }
+        };
+
+        function renderCalendars(areaKey) {
+            calendarContainer.innerHTML = '';
+            const schedule = schedules[areaKey];
+            const year = 2026; // 令和8年
+
+            for (let month = 0; month < 12; month++) {
+                const monthWrapper = document.createElement('div');
+                monthWrapper.className = 'calendar-month-wrapper';
+                
+                const title = document.createElement('h3');
+                title.className = 'month-title';
+                title.textContent = `${year}年 ${month + 1}月`;
+                monthWrapper.appendChild(title);
+
+                const table = document.createElement('table');
+                table.style.width = '100%';
+                table.style.borderCollapse = 'collapse';
+                table.style.fontSize = '12px';
+                
+                // 曜日のヘッダー
+                const days = ['日', '月', '火', '水', '木', '金', '土'];
+                let thead = '<thead><tr style="background:#f2f2f2;">';
+                days.forEach(d => thead += `<th style="border:1px solid #ccc; padding:5px;">${d}</th>`);
+                thead += '</tr></thead>';
+                table.innerHTML = thead;
+
+                const tbody = document.createElement('tbody');
+                const firstDay = new Date(year, month, 1).getDay();
+                const lastDate = new Date(year, month + 1, 0).getDate();
+
+                let date = 1;
+                for (let i = 0; i < 6; i++) {
+                    let row = document.createElement('tr');
+                    for (let j = 0; j < 7; j++) {
+                        let cell = document.createElement('td');
+                        cell.style.border = '1px solid #ccc';
+                        cell.style.padding = '5px';
+                        cell.style.height = '60px';
+                        cell.style.verticalAlign = 'top';
+                        cell.style.width = '14.2%';
+
+                        if (i === 0 && j < firstDay || date > lastDate) {
+                            cell.innerHTML = '';
+                        } else {
+                            let content = `<div><b>${date}</b></div>`;
+                            const dayOfWeek = j;
+
+                            // ゴミ種別判定
+                            if (schedule.burn.includes(dayOfWeek)) {
+                                content += '<div style="background:#ffcccc; font-size:10px; margin-top:2px; border-radius:2px; padding:1px;">●可燃</div>';
+                            }
+                            if (schedule.plastic.includes(dayOfWeek)) {
+                                content += '<div style="background:#ccffcc; font-size:10px; margin-top:2px; border-radius:2px; padding:1px;">●プラ</div>';
+                            }
+                            if (schedule.nonBurn.includes(dayOfWeek)) {
+                                content += '<div style="background:#ccccff; font-size:10px; margin-top:2px; border-radius:2px; padding:1px;">●不燃</div>';
+                            }
+                            if (schedule.bottles.includes(dayOfWeek)) {
+                                content += '<div style="background:#ffffcc; font-size:10px; margin-top:2px; border-radius:2px; padding:1px;">●缶瓶</div>';
+                            }
+
+                            cell.innerHTML = content;
+                            date++;
+                        }
+                        row.appendChild(cell);
+                    }
+                    tbody.appendChild(row);
+                    if (date > lastDate) break;
+                }
+                table.appendChild(tbody);
+                monthWrapper.appendChild(table);
+                calendarContainer.appendChild(monthWrapper);
+            }
+        }
+
+        // 初期表示
+        renderCalendars('wakasa');
+
+        // 地域切り替えイベント
+        areaSelect.addEventListener('change', (e) => {
+            renderCalendars(e.target.value);
+        });
+    }
+
+    // --- 5. ニュース表示機能（index.html用 5件制限） ---
     const newsContainer = document.getElementById('news-container');
     if (newsContainer) {
         function displayNews(category) {
             newsContainer.innerHTML = '';
             const list = newsData[category] || newsData['main'];
-            
-            // 【修正点】トップページは最新5件のみ表示
             const limitedList = list.slice(0, 5);
             
             limitedList.forEach(item => {
@@ -124,68 +216,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 displayNews(tab.getAttribute('data-category'));
             });
         });
-        displayNews('main'); // 初期表示
+        displayNews('main');
     }
 
-    // --- 5. 若狭市ページ用：全区キーワード検索ロジック ---
-    const wakasaNewsContainer = document.getElementById('wakasa-news-list');
-    if (wakasaNewsContainer) {
-        // 全カテゴリーのニュースを結合して検索対象にする
-        const allNews = [...newsData.main, ...newsData.local, ...newsData.economy];
+    // --- 6. 各市個別ページ用 フィルタリング ---
+    function setupCityNewsFilter(elementId, keywords) {
+        const container = document.getElementById(elementId);
+        if (!container) return;
         
-        const filtered = allNews.filter(item => 
-            item.title.includes("若狭市") || 
-            item.title.includes("若狭市営") || 
-            item.title.includes("若狭駅") ||
-            item.title.includes("七宮区") ||
-            item.title.includes("日澤区") || 
-            item.title.includes("明区") ||
-            item.title.includes("滝ヶ谷区") ||
-            item.title.includes("銀樂区") ||
-            item.title.includes("馬土川区") ||
-            item.title.includes("若狭区") ||
-            item.title.includes("峰廊区") ||
-            item.title.includes("鐘山区") ||
-            item.title.includes("赤蔦") ||
-            item.title.includes("医科大学")
-        );
-
-        filtered.forEach(item => {
-            const li = document.createElement('li');
-            li.innerHTML = `<a href="${item.url}"><span style="color:#666;">[${item.date}]</span> ${item.title}</a>`;
-            wakasaNewsContainer.appendChild(li);
-        });
-    }
-
-    // --- 6. 兵府市ページ用：全区キーワード検索ロジック ---
-    const hyofuNewsContainer = document.getElementById('city-news-list');
-    if (hyofuNewsContainer) {
         const allNews = [...newsData.main, ...newsData.local, ...newsData.economy];
-        
-        const filtered = allNews.filter(item => 
-            item.title.includes("兵府市") || 
-            item.title.includes("西平区") || 
-            item.title.includes("大川区") || 
-            item.title.includes("柳平区") || 
-            item.title.includes("柳賀川区") || 
-            item.title.includes("中兵府区") || 
-            item.title.includes("慶堂区") || 
-            item.title.includes("舞田区") || 
-            item.title.includes("南兵府区") ||
-            item.title.includes("電脳") ||
-            item.title.includes("ハイフ")
-        );
+        const filtered = allNews.filter(item => keywords.some(key => item.title.includes(key)));
 
         if (filtered.length === 0) {
-            hyofuNewsContainer.innerHTML = "<li>該当するニュースはありません。</li>";
+            container.innerHTML = "<li>該当するニュースはありません。</li>";
         } else {
             filtered.forEach(item => {
                 const li = document.createElement('li');
                 li.innerHTML = `<a href="${item.url}"><span style="color:#666;">[${item.date}]</span> ${item.title}</a>`;
-                hyofuNewsContainer.appendChild(li);
+                container.appendChild(li);
             });
         }
     }
+
+    // 若狭市
+    setupCityNewsFilter('wakasa-news-list', ["若狭市", "若狭市営", "若狭駅", "七宮区", "日澤区", "明区", "滝ヶ谷区", "銀樂区", "馬土川区", "若狭区", "峰廊区", "鐘山区", "赤蔦", "医科大学"]);
+    // 兵府市
+    setupCityNewsFilter('city-news-list', ["兵府市", "西平区", "大川区", "柳平区", "柳賀川区", "中兵府区", "慶堂区", "舞田区", "南兵府区", "電脳", "ハイフ"]);
+    // 物部市
+    setupCityNewsFilter('mononobe-news-list', ["物部", "市電", "路面電車", "漁港", "海水浴"]);
+
 });
 
 // --- ニュースデータ定義 ---
@@ -209,7 +268,7 @@ const newsData = {
         { date: "12/29", title: "西平区のショッピングモールに「若狭市営出張窓口」が開設", url: "#", isNew: false },
         { date: "12/28", title: "日澤区〜明区間でのWi-Fi提供エリアを拡大、若狭市営地下鉄が発表", url: "#", isNew: false },
         { date: "12/27", title: "滝ヶ谷区の渓谷公園で冬のライトアップ。若狭駅から臨時バス運行", url: "#", isNew: false },
-        { date: "12/26", title: "折鷺市で迷子のヤギが警察官と散歩", url: "#", isNew: false }
+        { date: "12/26", title: "折鷺市で迷子のヤギが警察官と散歩", url: "news", isNew: false }
     ],
     economy: [
         { date: "12/30", title: "柳賀川区のロボット工場、完全自動化ラインを公開", url: "#", isNew: false },
