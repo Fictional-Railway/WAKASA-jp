@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香津村 - WAKASA! 若狭県総合ポータル</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-area">
+            <h1><a href="../index.html" style="text-decoration: none;"><span class="red">WAKASA</span><span class="blue">!</span></a></h1>
+            <p class="subtitle">若狭県最大級の地域ポータル</p>
+        </div>
+        <div class="header-info">
+            <div id="clock-display" class="clock">0000年0月0日(月) 00:00:00</div>
+        </div>
+    </header>
+
+    <div class="status-bar2">
+        <span class="label2">ライブ天気予報</span>
+        <marquee scrollamount="3" class="weather-ticker" id="weather-display">
+            データを取得中...
+        </marquee>
+    </div>
+
+    <div class="status-bar">
+        <span class="label">インフラ情報</span>
+        <marquee scrollamount="5" class="ticker">
+            【漁業】香津漁港：本日の冬サバ水揚げ量、過去最高を記録　【鉄道】沿岸線：香津駅付近の強風の影響により一部徐行運転　【観光】香津レトロ地区：旧街道沿いの街灯点検により一部通行止め
+        </marquee>
+    </div>
+
+    <div class="main-container">
+        
+        <nav class="sidebar-left">
+            <div class="box-header">主要エリア（三都）</div>
+            <ul class="link-list">
+                <li><a href="./wakasa.html">若狭市</a></li>
+                <li><a href="./byobu.html">兵府市</a></li>
+                <li><a href="./mononobe.html">物部市</a></li>
+            </ul>
+
+            <div class="box-header">沿岸エリア</div>
+            <ul class="link-list">
+                <li><a href="./kozu.html">香津村</a></li>
+                <li><a href="#">渡町</a></li>
+                <li><a href="#">汐崖町</a></li>
+                <li><a href="#">伊舟市</a></li>
+                <li><a href="#">早手川町</a></li>
+                <li><a href="#">矢坂町</a></li>
+                <li><a href="#">江崎市</a></li>
+                <li><a href="#">葉が山町</a></li>
+            </ul>
+
+            <div class="box-header">中部・南部エリア</div>
+            <ul class="link-list">
+                <li><a href="#">甲日市</a></li>
+                <li><a href="#">氏川町</a></li>
+                <li><a href="#">徳峰町</a></li>
+                <li><a href="#">入塚市</a></li>
+                <li><a href="#">深山町</a></li>
+                <li><a href="#">折鷲市</a></li>
+                <li><a href="#">北陵市</a></li>
+                <li><a href="#">白央市</a></li>
+                <li><a href="#">千鳴村</a></li>
+                <li><a href="#">朝渕村</a></li>
+                <li><a href="#">丹谷町</a></li>
+                <li><a href="#">小桟田町</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-center">
+            
+            <section class="city-intro-section" style="border: 1px solid #ccc; padding: 15px; background: #fffaf0; margin-bottom: 20px; border-left: 10px solid #0066cc;">
+                <h2 style="margin-top: 0; color: #333; border-bottom: 2px solid #0066cc;">香津村 <span style="font-size: 0.6em; color: #666;">Kozu Village</span></h2>
+                <p>若狭県の最西端、京都府と接する日本海沿いの村。「香津サバ」や「香津カニ」が揚がる県内屈指の漁港を有し、活気あふれる朝市と、大正・昭和の面影を色濃く残すレトロな住宅街が共存する、情緒豊かな港町です。</p>
+                
+                <table style="width: 100%; font-size: 12px; border-collapse: collapse; margin-top: 10px;">
+                    <tr>
+                        <th style="background: #eee; border: 1px solid #ccc; padding: 5px; width: 20%;">人口</th>
+                        <td style="border: 1px solid #ccc; padding: 5px;">約8,500人</td>
+                        <th style="background: #eee; border: 1px solid #ccc; padding: 5px; width: 20%;">村の花</th>
+                        <td style="border: 1px solid #ccc; padding: 5px;">スイセン</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="district-section" style="margin-bottom: 20px;">
+                <div class="box-header">香津村 みどころガイド</div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px; padding: 10px; background: #eee; border: 1px solid #ccc;">
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>香津大漁市場</b><br><small>毎朝獲れたての魚介が並ぶ。海鮮丼の食べ歩きが人気</small></div>
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>香津レトロ通り</b><br><small>大正時代の商家や煉瓦造りの洋館が残る閑静なエリア</small></div>
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>県境・汐見岬</b><br><small>京都府との境界。日本海の夕日が絶景のスポット</small></div>
+                    <div style="background: #fff; padding: 8px; border: 1px solid #ddd;">■ <b>香津温泉・漁師の湯</b><br><small>漁港を一望できる露天風呂がある昔ながらの銭湯</small></div>
+                </div>
+            </section>
+
+            <section class="news-section">
+                <div class="news-header" style="border-bottom: 2px solid #0066cc;">
+                    <h2>香津村トピックス</h2>
+                </div>
+                <ul class="news-list" id="city-news-list">
+                    </ul>
+            </section>
+
+            <section class="local-links">
+                <div class="box-header">香津村 関連サービス</div>
+                <ul class="link-grid">
+                    <li><a href="#">香津漁港・本日のおすすめ魚情報</a></li>
+                    <li><a href="#">古民家ステイ・宿泊予約</a></li>
+                    <li><a href="#">香津〜舞鶴（京都府）連絡バス案内</a></li>
+                    <li><a href="#">釣り船・レジャー予約状況</a></li>
+                </ul>
+            </section>
+
+        </main>
+
+        <aside class="sidebar-right">
+            <div class="ad-area">
+                <p class="ad-label">広告</p>
+                <div class="ad-banner" style="background: #fff; color: #000; padding: 10px; border: 2px solid #0066cc;">
+                    <p style="margin:5px 0; font-size: 11px; color: #0066cc; font-weight: bold;">[お食事処] 香津の恵み</p>
+                    <p style="margin:5px 0; font-size: 11px;">名物「サバの味噌煮定食」<br>市場直送の鮮度が自慢！</p>
+                </div>
+                <div class="ad-banner2">
+                    <p>香津レトロ通りで暮らす</p>
+                    <p>空き家・古民家バンク</p>
+                    <strong style="color: #0066cc;">香津村移住支援センター</strong>
+                </div>
+            </div>
+
+            <div class="event-box">
+                <div class="box-header2">香津のイベント</div>
+                <ul class="small-list">
+                    <li>12/31：香津漁港・年越し朝市</li>
+                    <li>01/02：初荷・漁船パレード</li>
+                    <li>01/15：香津レトロ雛巡り</li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p class="copyright">Copyright (C) 2025 WAKASA Prefecture Portal. All Rights Reserved.</p>
+        <p class="disclaimer">※このサイトは架空のものです。</p>
+        <a style="color: rgb(87, 182, 255);" href="https://fictional-railway.github.io/myrailways/">架空鉄道一覧はこちらから</a><br><br>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('city-news-list');
+    if (container && typeof newsData !== 'undefined') {
+        
+        // 全ニュースから「香津」に関連するものだけをより正確に抽出
+        const kozuNews = [...newsData.main, ...newsData.local, ...newsData.economy].filter(item => 
+            item.title.includes("香津") || 
+            item.title.includes("汐見岬") ||
+            (item.title.includes("漁港") && !item.title.includes("物部")) // 物部漁港などは除外
+        );
+
+        // もし抽出されたニュースが少ない場合、香津村独自の「お知らせ」を表示させるロジック
+        const localNotice = [
+            { date: "1/1", title: "【お知らせ】香津大漁市場、初競りは1月4日から", url: "#" },
+            { date: "12/31", title: "香津レトロ通り「除夜の鐘」参拝に伴う交通規制", url: "#" }
+        ];
+
+        // ニュースを合体させて表示
+        const finalNews = [...localNotice, ...kozuNews];
+
+        if (finalNews.length === 0) {
+            container.innerHTML = "<li>現在、香津村のトピックスはありません。</li>";
+        } else {
+            container.innerHTML = ""; // 一旦リセット
+            finalNews.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<a href="${item.url}"><span class="date">[${item.date}]</span> ${item.title}</a>`;
+                container.appendChild(li);
+            });
+        }
+    }
+});
+    </script>
+</body>
+</html>
